@@ -1,0 +1,152 @@
+.main {
+  width: 580px;
+  height: 497px;
+  border-radius: 8px;
+  border: 0.5px #e5eeff solid;
+  left: 430px;
+  top: 104px;
+  position: relative; 
+  background: white;
+}
+.OtpVerification {
+
+  color: var(--neutral-n-800, #474d66);
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bolder;
+  line-height: 24px;
+  margin-left: 47px;
+  text-shadow: 0px 1px, 1px 0px, 1px 1px;
+
+}
+.enterCode {
+  color: #333;
+  text-align: center;
+  /* Paragraph/P-200 */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  margin-left: 38px;
+  text-shadow: 0px 1px, 1px 0px, 1px 1px;
+}
+.codeBlock {
+    width: 288px;
+    height: 42px;
+    left: 576px;
+    top: 428px;
+    text-shadow: 0px 1px, 1px 0px, 1px 1px;
+    position: absolute;
+}
+.blockOne {
+  width: 48px;
+  height: 2px;
+  left: 0px;
+  top: 40px;
+  position: absolute;
+  background: #d8dae5;
+  border-radius: 40px;
+}
+.blockTwo {
+  width: 48px;
+  height: 2px;
+  left: 60px;
+  top: 40px;
+  position: absolute;
+  background: #d8dae5;
+  border-radius: 40px;
+}
+.blockThree {
+  width: 48px;
+  height: 2px;
+  left: 120px;
+  top: 40px;
+  position: absolute;
+  background: #d8dae5;
+  border-radius: 40px;
+}
+.blockFour {
+  width: 48px;
+  height: 2px;
+  left: 180px;
+  top: 40px;
+  position: absolute;
+  background: #d8dae5;
+  border-radius: 40px;
+}
+.blockFive {
+  width: 48px;
+  height: 2px;
+  left: 240px;
+  top: 40px;
+  position: absolute;
+  background: #d8dae5;
+  border-radius: 40px;
+}
+.digit {
+  left: 15px;
+  top: -475px;
+  position: absolute;
+  text-align: center;
+  color: #474d66;
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 36;
+  word-wrap: break-word;
+}
+
+.digitTwo {
+  left: 16px;
+  top: -475px;
+  position: absolute;
+  text-align: center;
+  color: #474d66;
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 36;
+  word-wrap: break-word;
+}
+.digitThree {
+  left: 16px;
+  top: -475px;
+  position: absolute;
+  text-align: center;
+  color: #474d66;
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 36;
+  word-wrap: break-word;
+}
+.description {
+  left: 546px;
+  top: 259px;
+  position: absolute;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8;
+  display: inline-flex;
+}
+.minute {
+    color: var(--yellow-y-500, #996A13);
+    text-shadow: 0px 1px, 1px 0px, 1px 1px;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 400;
+  line-height: 20;
+  margin-top: -125px;
+  overflow-wrap: break-word;
+  position: absolute;
+  margin-left: -30px;
+}
+.image{
+    position: absolute;
+    margin-left: 26px;
+    margin-top: -116px;
+}

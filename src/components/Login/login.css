@@ -103,29 +103,41 @@ label {
   border: 1px solid white;
 }
 .google {
+  /* display: flex;
+  width: 102px;
+  padding: 8px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; */
+
   display: flex;
   width: 102px;
   padding: 8px 24px;
   justify-content: center;
   align-items: center;
   gap: 10px;
+border-radius: 2px;
+border: 1px solid var(--neutral-n-500, #c1c4d6);
 
-  display: flex;
+
+  /* display: flex;
   width: 60px;
   padding: 8px 24px;
   justify-content: center;
   align-items: center;
   gap: 10px;
   border-radius: 2px;
-  border: 1px solid var(--neutral-n-500, #c1c4d6);
+  border: 1px solid var(--neutral-n-500, #c1c4d6); */
 }
 .facebook {
-  display: flex;
-  width: 55px;
-  padding: 8px 24px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    width: 102px;
+    padding: 8px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+ 
   border-radius: 2px;
   border: 1px solid var(--neutral-n-500, #c1c4d6);
   margin-top: -51px;
@@ -133,7 +145,7 @@ label {
 }
 .apple {
   display: flex;
-  width: 64px;
+  width: 102px;
   padding: 8px 24px;
   justify-content: center;
   align-items: center;
@@ -143,48 +155,60 @@ label {
   margin-top: -51px;
   margin-left: 235px;
 }
+
 .footerButtons {
-  width: 292px;
-  height: 24px;
-  flex-shrink: 0;
-  top: 277px;
-  left: 535px;
-  position: relative;
+  /* display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center; */
+
+  /* flex-direction: row;
+  font-size: 30px; 
+  text-align: center;
+  margin-top: 284px;
+  cursor: pointer; */
+
+  margin-top: 284px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .helpText {
   color: #696f8c;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter";
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px;
-  margin-left: 400px;
-  border: unset;
-  background-color: white;
-  cursor: pointer;
+  line-height: 24px; /* 171.429% */
+  margin-right: 24px;
+}
+
+.termsText {
+  color: #696f8c;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 171.429% */
 }
 .privacyText {
   color: #696f8c;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter";
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px;
-  margin-left: 30px;
-  cursor: pointer;
+  line-height: 24px; /* 171.429% */
+  margin-left: 8px;
 }
-.termsText {
-  color: #696f8c;
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-  margin-top: -21px;
-  margin-left: 36px;
-  white-space: nowrap;
-  cursor: pointer;
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+  .footerButtons {
+    flex-direction: column;
+  }
 }
+
 .textClass {
   position: fixed;
   top: 20%;
@@ -207,14 +231,19 @@ label {
   line-height: 24px;
   margin-top: 13px;
 }
-.loginWith{
-    color: var(--neutral-n-700, #696F8C);
-font-family: 'Inter';
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 150% */
+.loginWith {
+  color: var(--neutral-n-700, #696f8c);
+  font-family: "Inter";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
 }
-.social{
-    margin-top: -27px;
+.social {
+  margin-top: -27px;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #0050f5;
 }
