@@ -1,15 +1,26 @@
 .main {
-  width: 580px;
+  /* width: 580px;
   height: 497px;
   border-radius: 8px;
   border: 0.5px #e5eeff solid;
   left: 430px;
   top: 104px;
   position: relative; 
+  background: white; */
+
+  height: 497px;
+  border-radius: 8px;
+  border: 0.5px #e5eeff solid;
+  left: 587px;
+  top: 175px;
+  position: relative;
   background: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 50%;
 }
 .OtpVerification {
-
   color: var(--neutral-n-800, #474d66);
   text-align: center;
   font-family: Inter;
@@ -19,7 +30,6 @@
   line-height: 24px;
   margin-left: 47px;
   text-shadow: 0px 1px, 1px 0px, 1px 1px;
-
 }
 .enterCode {
   color: #333;
@@ -34,12 +44,22 @@
   text-shadow: 0px 1px, 1px 0px, 1px 1px;
 }
 .codeBlock {
-    width: 288px;
+  width: 50%;
+  /* height: 42px; */
+  left: 818px;
+  top: 459px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0px 1px, 1px 0px, 1px 1px;
+  position: absolute;
+
+  /* width: 288px;
     height: 42px;
     left: 576px;
     top: 428px;
     text-shadow: 0px 1px, 1px 0px, 1px 1px;
-    position: absolute;
+    position: absolute; */
 }
 .blockOne {
   width: 48px;
@@ -124,18 +144,29 @@
   word-wrap: break-word;
 }
 .description {
-  left: 546px;
+  /* left: 546px;
   top: 259px;
   position: absolute;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 8;
-  display: inline-flex;
+  display: inline-flex; */
+  left: 588px;
+  width: 50%;
+  top: 259px;
+  position: absolute;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .minute {
-    color: var(--yellow-y-500, #996A13);
-    text-shadow: 0px 1px, 1px 0px, 1px 1px;
+  color: var(--yellow-y-500, #996a13);
+  text-shadow: 0px 1px, 1px 0px, 1px 1px;
   font-size: 14px;
   font-family: "Inter";
   font-weight: 400;
@@ -145,8 +176,147 @@
   position: absolute;
   margin-left: -30px;
 }
-.image{
-    position: absolute;
-    margin-left: 26px;
-    margin-top: -116px;
+.image {
+  position: absolute;
+  margin-left: 26px;
+  margin-top: -116px;
+}
+
+.verifyButton {
+  width: 348px;
+  height: 40px;
+  padding: 8px;
+  background: #0050f5;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+}
+
+/* *********************************************************** */
+
+.verfication_main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outer_main {
+}
+.main {
+}
+.main1 {
+  width: 580px;
+  height: 497px;
+  border-radius: 8px;
+  border: 0.5px #e5eeff solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.text1_main2 {
+  text-align: center;
+  color: #474d66;
+  font-size: 18px;
+  font-family: "Inter";
+  font-weight: bolder;
+  line-height: 24px;
+  word-wrap: break-word;
+}
+.text2_main2 {
+  color: #333333;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+.minutes {
+  color: #996a13;
+  font-size: 14px;
+  font-family: 'Inter';
+  line-height: 20px;
+  word-wrap: break-word;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.letter {
+  color: #474d66;
+  border-bottom: 1px solid blue;
+  text-align: center;
+  /* Heading/H3 - 24 */
+  font-family: "Inter";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px; /* 150% */
+  letter-spacing: -0.72px;
+}
+.button {
+  width: 348px;
+  /* height: 40px; */
+  padding: 8px;
+  background: #0050f5;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  /* gap: 382px; */
+  display: flex;
+  color: white;
+  margin-top: 74px;
+}
+.main2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.acnhor-tags {
+  color: #696f8c;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 500;
+  line-height: 50px;
+  word-wrap: break-word;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Inner_main3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  width: 40px;
+  border: none;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+  margin: 0 10px;
+  text-align: center;
+  cursor: not-allowed !important;
+  pointer-events: none;
+  color: #474d66;
+  font-size: 24px;
+  font-family: 'Inter';
+  font-weight: 700;
+  line-height: 36px;
+  word-wrap: break-word;
+}
+
+.input:focus {
+  border-bottom: 3px solid #0071fe;
+  outline: none;
+}
+
+.input:nth-child(1) {
+  cursor: pointer;
+  pointer-events: all;
 }
