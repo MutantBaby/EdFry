@@ -1,7 +1,11 @@
 import "./style.css";
 import img1 from "assets/svgs/img1.jpg";
 import img2 from "assets/svgs/img2.png";
+import sec7_p1 from "assets/svgs/sec7_p1.jpg";
+import sec7_p2 from "assets/svgs/sec7_p2.jpg";
+import sec7_p3 from "assets/svgs/sec7_p3.jpg";
 import sec4_mac from "assets/svgs/sec4_mac.jpg";
+import groupImg from "assets/svgs/groupImg.jpg";
 import sec4_girl from "assets/svgs/sec4_girl.jpg";
 import sec4_dell from "assets/svgs/sec4_dell.jpg";
 import sec4_nasa from "assets/svgs/sec4_nasa.jpg";
@@ -14,6 +18,7 @@ import { img2_frame } from "assets/svgs/img2_frame";
 import { sec2_frame1 } from "assets/svgs/sec2_frame1";
 import { sec2_frame2 } from "assets/svgs/sec2_frame2";
 import { sec2_frame3 } from "assets/svgs/sec2_frame3";
+import { sec6_clock } from "assets/svgs/sec6_clock";
 
 const ImageContainer = ({ img, img_frame, clsStr1 }) => {
   return (
@@ -65,6 +70,46 @@ const CompContainer = () => {
       </div>
       <div className="section4_inner_style">
         <img src={sec4_razer} alt="" />
+      </div>
+    </div>
+  );
+};
+
+const Sec6ClockBox = ({ title, bg }) => {
+  return (
+    <div style={{ backgroundColor: `${bg}` }} className="con1_part1">
+      {sec6_clock}
+      <div>
+        <h4>{title}</h4>
+        <p>
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          Sint. Velit officia consequat duis enim velit mollit. Exercitation
+          veniam consequat sunt nostrud amet.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const Sec7AvatarBox = ({ avatar, title, name, data }) => {
+  return (
+    <div className="con1_part1 sec7_update">
+      <div>
+        <h4 style={{ marginBottom: "24px" }}>{title}</h4>
+        <p>
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          Sint. Velit officia consequat duis enim velit mollit. Exercitation
+          veniam consequat sunt nostrud amet.
+        </p>
+      </div>
+
+      <div className="sec7_avatar_info">
+        <img src={avatar} alt="" />
+
+        <div className="sec7_avatar_inner">
+          <h4>{name}</h4>
+          {data}
+        </div>
       </div>
     </div>
   );
@@ -164,6 +209,71 @@ const MainPage = () => {
           <CompContainer />
 
           <h1>Where our tutors come from</h1>
+        </div>
+      </div>
+
+      <div className="section5">
+        <div className="section5_inner">
+          <div className="section5_img_container">
+            <img src={groupImg} alt="" />
+          </div>
+
+          <div className="inner_portion5">
+            <h1>
+              Study in Groups <br /> Just like you do!
+            </h1>
+
+            <button>Search Group</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="section6">
+        <div className="section6_inner1">
+          <h1>Why use Edfry?</h1>
+
+          <div className="section6_container">
+            <div className="sec6_con1">
+              <Sec6ClockBox title={"On-demand mentoring"} bg={"#F0F5FF"} />
+              <Sec6ClockBox title={"Study in Groups"} bg={"#F2FCFD"} />
+            </div>
+            <div style={{ marginTop: "50px" }} className="sec6_con2">
+              <Sec6ClockBox
+                title={"Learn from the best mentors"}
+                bg={"#F4F5FB"}
+              />
+              <Sec6ClockBox title={"Get help in any subject"} bg={"#FFFAF1"} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section6">
+        <div className="section6_inner1 ">
+          <h1>What people Say about us</h1>
+
+          <div className="section6_container">
+            <div className="sec6_con1 section7">
+              <Sec7AvatarBox
+                avatar={sec7_p1}
+                name={"Jamil Tariq"}
+                data={"Edfryer since 2019"}
+                title={`Best Platform to Learn and to Discuss Academia`}
+              />
+              <Sec7AvatarBox
+                avatar={sec7_p2}
+                name={"Jamil Tariq"}
+                data={"Edfryer since 2019"}
+                title={`Best Platform to Learn and to Discuss Academia`}
+              />
+              <Sec7AvatarBox
+                avatar={sec7_p3}
+                name={"Jamil Tariq"}
+                data={"Edfryer since 2019"}
+                title={`Best Platform to Learn and to Discuss Academia`}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
