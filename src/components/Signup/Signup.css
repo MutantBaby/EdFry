@@ -1,8 +1,3 @@
-*,
-:after,
-:before {
-  box-sizing: border-box;
-}
 .clearfix:after,
 .clearfix:before {
   content: "";
@@ -16,44 +11,44 @@ a {
   color: inherit;
   text-decoration: none;
 }
-.containerz{
-    width: 696px;
-    height: 483px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    top: 140px;
-    position: relative;
-    left: 13px;
-    margin: auto;
+.containerz {
+  width: 696px;
+  height: 483px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  top: 140px;
+  position: relative;
+  left: 13px;
+  margin: auto;
 }
 .login-wrap {
-    width: 696px;
-    height: 483px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid var(--blue-b-200, #e5eeff);
-    top: 256px;
-    position: relative;
-    margin: auto;
+  width: 696px;
+  height: 483px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--blue-b-200, #e5eeff);
+  top: 256px;
+  position: relative;
+  margin: auto;
 }
 .cards {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    padding: 90px 70px 50px 70px;
-    margin-top: -60px;
-    margin-left: 72px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 90px 70px 50px 70px;
+  margin-top: -60px;
+  margin-left: 72px;
 }
 .cards .sign-in-htm,
 .cards .sign-up-htm {
-    top: 40px;
-    left: 128px;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    transform: rotateY(180deg);
-    backface-visibility: hidden;
-    transition: all 0.4s linear;
+  top: 40px;
+  left: 128px;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  transition: all 0.4s linear;
   /* top: 0;
   left: 0;
   right: 0;
@@ -82,41 +77,40 @@ a {
   border-bottom: 2px solid transparent; */
 
   padding-bottom: 5px;
-    margin: 0 15px 10px 0;
-    display: inline-block;
-    border-bottom: 2px solid transparent;
-    font-size: 16px;
-    font-family: Inter;
-    font-weight: 900;
-    line-height: 24px;
-    white-space: nowrap;
-    word-wrap: break-word;
-
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 900;
+  line-height: 24px;
+  white-space: nowrap;
+  word-wrap: break-word;
 }
 .cards .sign-in:checked + .tab,
 .cards .sign-up:checked + .tab {
-    color: #296FFF;
-    /* border-color: #1161ee; */
-    background: #e9f0ff;
-    /* font-weight: bolder; */
-    text-shadow: 1px 1px, 0px 1px, 0px 1px;
-    font-weight: bolder;
-/* 
+  color: #296fff;
+  /* border-color: #1161ee; */
+  background: #e9f0ff;
+  /* font-weight: bolder; */
+  text-shadow: 1px 1px, 0px 1px, 0px 1px;
+  font-weight: bolder;
+  /*
   color: #296FFF;
     border-color: #1161ee;
     background: #e9f0ff; */
 }
 .login-form {
-    width: 595px;
-    height: 483px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid var(--blue-b-200, #e5eeff);
-    top: 33px;
-    position: relative;
-    margin: auto;
-    margin-left: 99px;
-    left: -206px;
+  width: 595px;
+  height: 483px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--blue-b-200, #e5eeff);
+  top: 33px;
+  position: relative;
+  margin: auto;
+  margin-left: 99px;
+  left: -206px;
   min-height: 345px;
   position: relative;
   perspective: 1000px;
@@ -190,13 +184,7 @@ a {
 .login-form .group .check:checked + label .icon:after {
   transform: scale(1) rotate(-45deg);
 }
-.cards
-  .sign-in:checked
-  + .tab
-  + .sign-up
-  + .tab
-  + .login-form
-  .sign-in-htm {
+.cards .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm {
   transform: rotate(0);
 }
 .cards .sign-up:checked + .tab + .login-form .sign-up-htm {
@@ -226,10 +214,9 @@ a {
   display: inline-flex;
 }
 .prevClass {
-    
-  color: #8F95B2;
+  color: #8f95b2;
   font-size: 16px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 600;
   line-height: 24px;
   word-wrap: "break-word";
