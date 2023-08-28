@@ -50,7 +50,6 @@ const Form = () => {
           message,
         }),
       });
-     console.log("reaspionse",response.body)
     } catch (error) {
       // Handle error
     }
