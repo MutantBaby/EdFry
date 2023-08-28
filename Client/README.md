@@ -1,2 +1,0 @@
-# EdFry
-Online Teaching App
