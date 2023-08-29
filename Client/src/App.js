@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Pages
 import MainPage from "pages/Main";
+import ProfilePage from "pages/Profile";
 
 // Components
 import Home from "components/Home/Home";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/nav" element={<Navbar />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/otp" element={<Verification />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );
