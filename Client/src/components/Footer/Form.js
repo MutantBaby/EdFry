@@ -36,7 +36,7 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/submit-form', {
+      const response = await fetch('https://ed-fry-backend.vercel.app/api/submit-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
