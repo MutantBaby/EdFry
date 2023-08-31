@@ -36,22 +36,29 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://edfry-backend.vercel.app/api/submit-form', {
+      const response = await fetch('https://edfry-backend.vercel.app/api/submit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
-        },
+          'Content-Type': 'application/json',
+          "Access-Control-Allow-Headers" : "Content-Type",
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+      },
         body: JSON.stringify({
           firstName,
           lastName,
-          email,
           phone,
           message,
+          email,
         }),
       });
-    } catch (error) {
-      // Handle error
+    if (response.ok) {
+      console.log('User registered successfully');
+    } else {
+      console.error('Error registering user');
     }
+  } catch (error) {
+    console.error('Error:', error);
+  }
   };
 
   return (
