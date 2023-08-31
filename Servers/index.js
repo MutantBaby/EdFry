@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const { Pool } = require('pg'); // Import the Pool class from pg
 const app = express();
 const port = 5000;
-
+const serverless = require('serverless-http');
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
