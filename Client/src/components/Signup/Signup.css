@@ -9,6 +9,7 @@
 .containerz {
 }
 .inner-page2 {
+  margin-top: 42px;
   width: 580px;
   height: 497px;
   border-radius: 8px;
@@ -57,6 +58,12 @@
   font-weight: bold;
   line-height: 24px;
   word-wrap: break-word;
+
+
+
+  
+
+     
 }
 .button-Sign {
   width: 348px;
@@ -73,6 +80,12 @@
 }
 .button-Signup:focus {
   color: #0071fe;
+  background-color: #e9f0ff;
+  /* color: white; */
+  border: none;
+  border-radius: 5px;
+  padding: 12px 11px;
+  cursor: pointer;
 }
 .social-Signup {
   cursor: pointer;
@@ -85,4 +98,12 @@
   margin-top: 55px;
   border-radius: 2px;
   border: 1px solid var(--neutral-n-500, #c1c4d6);
+}
+.divider{
+  width:20px;
+  height:auto;
+  display:inline-block;
+}
+input{
+  text-indent: 10px;
 }

@@ -47,6 +47,7 @@ const Signup = () => {
           <div className="inner-page1">
             <div className="Inner_main1">
               <button className="button-Signup">Signup as a Student</button>
+              <div className="divider"/>
               <button className="button-Signup">Signup as a Teacher</button>
             </div>
           </div>

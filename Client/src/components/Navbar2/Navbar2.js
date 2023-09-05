@@ -10,8 +10,8 @@ const Navbar2 = () => {
     </div>
     <ul class="navbar-menu">
       <li><a href="/home">Home</a></li>
-      <li><a href="#">Community</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+      <li><a href="/admission">Admission</a></li>
     </ul>
     <button class="login-button">Login</button>
   </nav>
