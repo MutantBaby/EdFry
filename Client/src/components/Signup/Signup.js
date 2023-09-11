@@ -4,95 +4,195 @@ import Navbar from "../Navbar/Navbar";
 import { google } from "../../assets/svgs/google";
 import { facebook } from "../../assets/svgs/facebook";
 import { apple } from "../../assets/svgs/apple";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import PhoneNumberInput from "../PhoneNumber/PhoneNumber";
+import { useHistory, useNavigate } from "react-router-dom";
+import Phone from "./Phone";
+import { GoogleButton } from 'react-google-button';
+import { UserAuth } from "../../context/AuthContext";
 const Signup = () => {
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
+  // const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    contact: "",
+    code: "",
+  });
+
+  const countries = [
+    { code: "+1", name: "United States", flag: "🇺🇸" },
+    { code: "+2", name: "United Kingdom", flag: "🇬🇧" },
+    { code: "+3", name: "Australia", flag: "🇦🇺" },
+    { code: "+92", name: "Pakistan", flag: "🇵🇰" },
+  ];
+
   const fire = () => {
-    if(phone && email) {
+    if (formData.contact && formData.email) {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "OTP sent to" + phone,
+        title: "OTP sent to" + formData.contact,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2500,
         timerProgressBar: true,
       }).then(function () {
         window.location = "/otp";
       });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Please Enter details",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      }).then(function () {
+        window.location = "/";
+      });
     }
-  else{
-    Swal.fire({
-      position: "center",
-      icon: 'error',
-      title: "Please Enter details",
-      showConfirmButton: false,
-      timer: 1500,
-      timerProgressBar: true,
-    }).then(function () {
-      window.location = "/";
-    });
-  }
   };
-  const handleChange = (event) => {
-    event.preventDefault();
-    console.log("Values", email);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const contact = `+${formData.countryCode}${formData.phoneNumber}`;
+      const response = await fetch("http://localhost:5000/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          contact,
+        }),
+      });
+      // onSubmit(formData);
+
+      console.log("RESPO", response.body);
+      if (response.ok) {
+        console.log("User registered successfully");
+      } else {
+        console.error("Error registering user");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    console.log("SHITR", formData);
+    // history.push("/otpverify", { phone: formData.contact });
+  };
+  // const handleCountryChange = (e) => {
+  //   const countryCode = e.target.value;
+  //   const selectedCountry = countries.find(
+  //     (country) => country.code === countryCode
+  //   );
+  //   setSelectedCountry(selectedCountry);
+  // };
+
+
+  const { googleSignIn, user } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user != null) {
+      navigate('/');
+    }
+  }, [user]);
   return (
     <>
-    <Navbar/>
-      <div className="mainSignup">
+      {/* <Navbar /> */}
+      {/* <div className="mainSignup">
         <div className="containerz">
           <div className="inner-page1">
             <div className="Inner_main1">
               <button className="button-Signup">Signup as a Student</button>
-              <div className="divider"/>
+              <div className="divider" />
               <button className="button-Signup">Signup as a Teacher</button>
             </div>
           </div>
+          <Phone/> 
           <div className="inner-page2">
             <div className="Inner_main2">
-              <form onSubmit={handleChange}>
+              <form onSubmit={handleSubmit}>
                 <label for="email" className="everyLabel">
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   placeholder="Email"
                   className="emailClass"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  value={formData.email}
+                  onChange={handleChange}
                 />
-
-                <label for="number" className="everyLabel">
-                  Phone Number
+                <label for="name" className="everyLabel">
+                  Name
                 </label>
                 <input
                   type="text"
-                  id="number"
+                  id="name"
+                  name="name"
+                  placeholder="Name"
+                  className="emailClass"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                <label for="name" className="everyLabel">
+                  Phone
+                </label>
+                <select
+                  name="code"
+                  value={formData.code}
+                  className="emailClass"
+                  onChange={handleChange}
+                >
+                  {countries.map((country) => (
+                    <option key={country.code} value={country.code}>
+                      {country.flag} {country.name} ({country.code})
+                    </option>
+                  ))}
+                </select>
+
+                <input
+                  type="text"
+                  id="contact"
+                  name="contact"
                   placeholder="Phone Number"
                   className="emailClass"
-                  value={phone}
-                  onChange={(event) => setPhone(event.target.value)}
+                  value={formData.contact}
+                  onChange={handleChange}
                 />
-
                 <button
                   type="submit"
                   className="button-Sign"
-                  onClick={() => {
-                    fire();
-                  }}
+                  // onClick={() => {
+                  //   fire();
+                  // }}
                 >
                   Signup
                 </button>
               </form>
             </div>
             <div className="Inner_main3">
-              <div className="social-Signup">{google}</div>
-              <div className="social-Signup">{facebook}</div>
-              <div className="social-Signup">{apple}</div>
+              <div className="social-Login">{google}</div>
+              <div className="social-Login">{facebook}</div>
+              <div className="social-Login">{apple}</div>
             </div>
           </div>
 
@@ -108,6 +208,18 @@ const Signup = () => {
             <a className="acnhor-tags" style={{ fontWeight: "bold" }}>
               Privacy
             </a>
+          </div>
+        </div>
+      </div> */}
+      <div className="mainSignup">
+        <div className="containerz">
+          <div className="inner-page2">
+            <div className="Inner_main2">
+              <h1 className="text-center text-3xl font-bold py-8">Sign in</h1>
+              <div className="max-w-[240px] m-auto py-4">
+                <GoogleButton onClick={handleGoogleSignIn} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

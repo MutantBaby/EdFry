@@ -296,8 +296,8 @@
   align-items: center;
 }
 
-.input {
-  /* width: 40px;
+/* .input {
+  width: 40px;
   border: none;
   border-bottom: 3px solid rgba(0, 0, 0, 0.5);
   margin: 0 10px;
@@ -309,8 +309,8 @@
   font-family: 'Inter';
   font-weight: 700;
   line-height: 36px;
-  word-wrap: break-word; */
-}
+  word-wrap: break-word;
+} */
 
 .input:focus {
   border-bottom: 3px solid #0071fe;

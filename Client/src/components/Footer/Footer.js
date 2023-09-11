@@ -24,15 +24,15 @@ const Footer = () => {
               <a href="#" className="icon">
                 {whatsapp}
               </a>
-              <a href="#" className="icon">
+              <a href="https://instagram.com/edfry.i?igshid=MzRlODBiNWFlZA==" className="icon">
                 {massenger}
               </a>
-              <a href="#" className="icon">
+              <a href="https://instagram.com/edfry.i?igshid=MzRlODBiNWFlZA==" className="icon">
                 {instagram}
               </a>
             </div>
             <div className="icon-row">
-              <a href="#" className="icon">
+              <a href="https://www.youtube.com/@edfry.tutoring" className="icon">
                 {youtube}
               </a>
               <a href="#" className="icon">

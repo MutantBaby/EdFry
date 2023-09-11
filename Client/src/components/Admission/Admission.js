@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./admission.css";
 import Navbar2 from "../Navbar2/Navbar2";
+import SweetAlertService from "../../services/SweetAlert";
 const Admission = () => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
@@ -60,9 +61,12 @@ const Admission = () => {
     console.error('Error:', error);
   }
   };
+  const handleResponse = () =>{
+    SweetAlertService.success("Congrats","Your Response has been submitted successfully")
+  }
   return (
     <>
-      <Navbar2 />
+      {/* <Navbar2 /> */}
       <div className="contain">
         <div className="content">
           <header className="header">
@@ -609,7 +613,7 @@ const Admission = () => {
                 </ul>
               </div>
 
-              <button id="submit" className="final-button" type="submit">
+              <button id="submit" className="final-button" type="submit" onClick={handleResponse}>
                 Submit
               </button>
             </form>

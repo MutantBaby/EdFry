@@ -36,6 +36,7 @@ const Navbar = () => {
             Login
           </Link>
         </button>
+        
       </div>
     </>
   );

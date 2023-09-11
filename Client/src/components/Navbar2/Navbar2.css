@@ -105,3 +105,60 @@
     width: 90%;
   }
 }
+
+
+
+
+
+
+.cardClass{
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.display-picture{
+  margin-left: auto;
+}
+.display-picture img{
+  width: 50px;
+  border-radius: 50%;
+  border:2px solid #fff;
+}
+.display-picture img:hover{
+border:2px solid #0052f4;
+}
+.cards{
+  transition: 0.5s ease;
+}
+
+.cards .cardClass{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background: #0052f4;
+  position: absolute;
+  top: 4rem;
+  right:0rem;
+border-radius: 10px;
+padding: 10px 50px 10px 20px;
+}
+.cards  .cardClass .cardList{
+ 
+  padding: 5px 0;
+  color: #FFF;
+  font-size: 14px;
+}
+.hiddens{
+  display: none;
+}
+.cardLink
+{
+  text-decoration: none;
+  color:#fff;
+}
+
+.cardLink :hover
+{
+  
+  color:red;
+}

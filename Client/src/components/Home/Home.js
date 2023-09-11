@@ -7,7 +7,7 @@ import Navbar2 from "../Navbar2/Navbar2"
 const Home = () =>{
     return (
         <>
-        <Navbar2/>
+        {/* <Navbar2/> */}
         <MainPage />
         <Form />
         <Footer/>
