@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import "./Immigration.css";
 import Navbar2 from "../Navbar2/Navbar2";
+import SweetAlertService from "../../services/SweetAlert";
 const Immigration = () => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [age, setAge] = useState("");
   const [qualification, setQualification] = useState("");
   const [cost, setCost] = useState("");
+  const [email, setEmail] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
   const [experience, setExperience] = useState("");
-  const [ieltsTaken, setIeltsTaken] = useState("");
+  const [marriage, setMarriage] = useState("");
   const [ieltsScore, setIeltsScore] = useState("");
-
+  const [family, setFamily] = useState("");
+  const [relative, setRelative] = useState("");
+  const [expense  , setExpense] = useState("")
   const handleIeltsTaken = (event) => {
-    setIeltsTaken(event.target.value);
+    setMarriage(event.target.value);
   };
   const handleCost = (event) => {
     setCost(event.target.value);
@@ -20,30 +26,52 @@ const Immigration = () => {
   const handleQualification = (event) => {
     setQualification(event.target.value);
   };
+  const handleRelative = (event) =>{
+    setRelative(event.target.value)
+  }
+  const handleExperience = (event)=>{
+    setExperience(event.target.value)
+  }  
+  const handleExpense = (event) =>{
+    setExpense(event.target.value)
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://edfry-backend.vercel.app/api/immigration', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          "Access-Control-Allow-Headers" : "Content-Type",
-          "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-      },
-        body: JSON.stringify({
-          age, contact, cost, experience, ieltsScore, ieltsTaken,name, qualification,
-        }),
-      });
-      console.log("RESPO",response)
-    if (response.ok) {
-      console.log('User registered successfully');
-    } else {
-      console.error('Error registering user');
+      const response = await fetch(
+        "https://edfry-backend.vercel.app/api/immigration",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+          },
+          body: JSON.stringify({
+            age,
+            contact,
+            cost,
+            experience,
+            ieltsScore,
+            marriage,
+            name,
+            qualification,
+          }),
+        }
+      );
+      console.log("RESPO", response);
+      if (response.ok) {
+        console.log("User registered successfully");
+      } else {
+        console.error("Error registering user");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
-  } catch (error) {
-    console.error('Error:', error);
-  }
   };
+  const handleResponse = () =>{
+    SweetAlertService.success("Congrats","Your Response has been submitted successfully")
+  }
   return (
     <>
       {/* <div classNameName="form-container">
@@ -135,7 +163,7 @@ const Immigration = () => {
       </form>
     </div> */}
 
-    <Navbar2/>
+ 
       <div className="contain">
         <div className="content">
           <header className="header">
@@ -143,33 +171,71 @@ const Immigration = () => {
               Immigration Form
             </h1>
             <p id="description" className="descriptions">
-              Averou, an Ontario-based Immigration firm. Our services include
+              You answers to this form will help our team assess whether you
               <br />
-              Express Entry, Provincial Nominee Program, Entrepreneurs and
+              qualify for a free 15 min consultation. Averou Immigration
               <br />
-              Self-Employed Visa C12, Intra-Company Transfer C11 and other
+              Services is a registered Canadian Immigration firm and authorized
               <br />
-              investment Study and visit visas.
+              by the Government of Canada to provider immigration advice and
+              <br />
+              services. The principle consultant at the firm is Mr. Amir Ala
+              <br />
+              Moyaeri RCIC#: R532525 Averou Immigration Services 9131 Keele St.
+              <br />
+              Suite A4 Vaughn, ON LK4 0G7 pakistan@averou.ca
             </p>
           </header>
-          <hr/>
+          <hr />
           <main>
-            <form onSubmit= {handleSubmit} id="survey-form">
+            <form onSubmit={handleSubmit} id="survey-form">
               <div>
                 <ul className="ul">
                   <li className="li">
-                    <label for="name" id="name-label" className="label-main">
-                      Name
+                    <label for="email" id="email-label" className="label-main">
+                      Email
                     </label>
                     <input
                       autofocus
-                      id="name"
+                      id="email"
                       className="input-text"
                       type="text"
                       name="name"
-                      placeholder="Your name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)} 
+                      placeholder="Your Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </li>
+                  <li className="li">
+                    <label for="fname" id="fname-label" className="label-main">
+                      First Name
+                    </label>
+                    <input
+                      autofocus
+                      id="fname"
+                      className="input-text"
+                      type="text"
+                      name="fname"
+                      placeholder="Your furst name"
+                      value={fname}
+                      onChange={(e) => setFname(e.target.value)}
+                      required
+                    />
+                  </li>
+                  <li className="li">
+                    <label for="lname" id="lname-label" className="label-main">
+                      Last Name
+                    </label>
+                    <input
+                      autofocus
+                      id="lname"
+                      className="input-text"
+                      type="text"
+                      name="lanem"
+                      placeholder="Your last name"
+                      value={lname}
+                      onChange={(e) => setLname(e.target.value)}
                       required
                     />
                   </li>
@@ -184,7 +250,7 @@ const Immigration = () => {
                       name="contact"
                       placeholder="Your contact"
                       value={contact}
-                      onChange={(e)=> setContact(e.target.value)}
+                      onChange={(e) => setContact(e.target.value)}
                       required
                     />
                   </li>
@@ -203,7 +269,68 @@ const Immigration = () => {
                       name="age"
                       placeholder="Your age"
                       value={age}
-                      onChange={(e)=> setAge(e.target.value)}
+                      onChange={(e) => setAge(e.target.value)}
+                      required
+                    />
+                  </li>
+                  <li className="li">
+                    <label for="email" id="email-label" className="label-main">
+                      What is Your Martial Status
+                    </label>
+                    <ul id="marriage" className="ul">
+                      <li className="li-horiz input radio">
+                        <input
+                          id="yes-marriage"
+                          type="radio"
+                          name="marriage"
+                          value="Single"
+                          onChange={handleIeltsTaken}
+                          className="master"
+                        />
+                        <label for="yes-marriage">Single</label>
+                      </li>
+                      <li className="li-horiz input radio">
+                        <input
+                          id="nor-marriage"
+                          type="radio"
+                          name="marriage"
+                          value="Married"
+                          onChange={handleIeltsTaken}
+                        />
+                        <label for="nor-marriage">Married</label>
+                      </li>
+                      <li className="li-horiz input radio">
+                        <input
+                          id="not-engaged"
+                          type="radio"
+                          name="marriage"
+                          value="Engaged"
+                          onChange={handleIeltsTaken}
+                        />
+                        <label for="not-engaged">Engaged</label>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="li">
+                    <label
+                      for="number"
+                      id="number-label"
+                      className="label-main"
+                    >
+                      If you are married, what is your family unit size? <br />
+                      (Unitsize = both spouses + total number of children){" "}
+                      <br />
+                      Forexample: a family with 4 children will have a family
+                      unit size of 6
+                    </label>
+                    <input
+                      id="number"
+                      className="input-text"
+                      type="text"
+                      name="age"
+                      placeholder="Your Answer"
+                      value={family}
+                      onChange={(e) => setFamily(e.target.value)}
                       required
                     />
                   </li>
@@ -229,25 +356,20 @@ const Immigration = () => {
               </div> */}
               <div className="separator">
                 <label for="cost" className="label-main">
-                  {" "}
-                  Immigration process can cost around 1 million PKR. Do you have
-                  enough funds?{" "}
+                  Beyond proof of settlement funds, you must also ensure that<br/>
+                  you have enough funds to cover service and government fee.
                 </label>
                 <ul>
                   <li style={{ listStyle: "none" }}>
-                    Some of the costs include
+                    1) Degree equivalency: $350 USD
                   </li>
                   <li style={{ listStyle: "none" }}>
-                    1. WES for degree verification that is around USD 350
+                    2) ILETS: $55,000 PKR</li>
+                  <li style={{ listStyle: "none" }}>
+                    3) Professional Fee: Starts from $2,500 CAD
                   </li>
                   <li style={{ listStyle: "none" }}>
-                    2. IELTS Cost that is around 55,000
-                  </li>
-                  <li style={{ listStyle: "none" }}>
-                    3. Administration cost 250,000
-                  </li>
-                  <li style={{ listStyle: "none" }}>
-                    4. Other costs can come up
+                    4) Government Fee: $235 - $1400 CAD
                   </li>
                 </ul>
 
@@ -264,12 +386,18 @@ const Immigration = () => {
                     <label for="yes">Yes</label>
                   </li>
                   <li className="li-horiz input radio">
-                    <input id="no" type="radio" name="cost" value="no"
-                      onChange={handleCost}/>
+                    <input
+                      id="no"
+                      type="radio"
+                      name="cost"
+                      value="no"
+                      onChange={handleCost}
+                    />
                     <label for="no">No</label>
                   </li>
                   <li className="li-horiz input radio">
                     <input
+                      id="maybe"
                       type="radio"
                       name="cost"
                       value="maybe"
@@ -281,58 +409,71 @@ const Immigration = () => {
               </div>
               <div className="separator">
                 <label for="qualification" className="label-main">
-                  Highest Qualification
+                  What is your highest level of education? *
                 </label>
-                <ul id="qualification" className="ul">
+                <ul
+                  id="qualification"
+                  className="ul"
+                  style={{ whiteSpace: "nowrap", display: "grid" }}
+                >
                   <li className="li-horiz input radio">
                     <input
-                      id="bachelors"
+                      id="highSchool"
                       type="radio"
                       name="qualification"
-                      value="bachelors"
+                      value="highSchool"
                       onChange={handleQualification}
                       className="master"
                     />
-                    <label for="bachelors">Bachelors</label>
+                    <label for="highSchool">High School or Less</label>
                   </li>
                   <li className="li-horiz input radio">
                     <input
-                      id="masters"
+                      id="diploma or certificate"
                       type="radio"
                       name="qualification"
-                      value="masters"
+                      value="diploma or certificate"
                       onChange={handleQualification}
                     />
-                    <label for="masters">Masters</label>
-                  </li>
-                  <li className="li-horiz input radio">
-                    <input id="phd" type="radio" name="qualification" value="phd" />
-                    <label for="phd">PhD</label>
-                  </li>
-                  <li className="li-horiz input radio">
-                    <input
-                      id="intermediate"
-                      type="radio"
-                      name="qualification"
-                      value="intermediate"
-                      onChange={handleQualification}
-                    />
-                    <label for="intermediate">Inter</label>
+                    <label for="diploma or certificate">
+                      One to two year diploma or certificate
+                    </label>
                   </li>
                   <li className="li-horiz input radio">
                     <input
-                      id="diploma"
+                      id="3year undergrad degree"
                       type="radio"
                       name="qualification"
-                      value="diploma"
+                      value="3year undergrad degree"
+                    />
+                    <label for="3year undergrad degree">
+                      Three or more year diploma, certificate, or undergraduate
+                      level degree
+                    </label>
+                  </li>
+                  <li className="li-horiz input radio">
+                    <input
+                      id="master's"
+                      type="radio"
+                      name="qualification"
+                      value="master's"
                       onChange={handleQualification}
                     />
-                    <label for="diploma">Diploma</label>
+                    <label for="master's">Master's Degree</label>
+                  </li>
+                  <li className="li-horiz input radio">
+                    <input
+                      id="Phd"
+                      type="radio"
+                      name="qualification"
+                      value="Phd"
+                      onChange={handleQualification}
+                    />
+                    <label for="Phd">Doctoral Degree (PhD)</label>
                   </li>
                 </ul>
               </div>
 
-            
               <div>
                 <ul className="ul">
                   <li className="li">
@@ -341,23 +482,53 @@ const Immigration = () => {
                       id="experience-label"
                       className="label-main"
                     >
-                      How many years of work Experience do you have?{" "}
+                      How much skilled work experience do you have? *
                     </label>
-                    <input
-                      autofocus
+                    <ul
                       id="experience"
-                      className="input-text"
-                      type="text"
-                      name="experience"
-                      placeholder="Your Answer"
-                      value={experience}
-                      onChange={(e)=>setExperience(e.target.value)}
-                      required
-                    />
+                      className="ul"
+                      style={{ whiteSpace: "nowrap", display: "grid" }}
+                    >
+                      <li className="li-horiz input radio">
+                        <input
+                          id="lessthan 6 months"
+                          type="radio"
+                          name="experience"
+                          value="lessthan 6 months"
+                          onChange={handleExperience}
+                          className="master"
+                        />
+                        <label for="lessthan 6 months">
+                          Less than 6 months.
+                        </label>
+                      </li>
+                      <li className="li-horiz input radio">
+                        <input
+                          id="6 months to 5 years"
+                          type="radio"
+                          name="experience"
+                          value="6 months to 5 years"
+                          onChange={handleExperience}
+                        />
+                        <label for="6 months to 5 years">
+                          6 months to 5 years
+                        </label>
+                      </li>
+                      <li className="li-horiz input radio">
+                        <input
+                          id="More than 5 years"
+                          type="radio"
+                          name="experience"
+                          value="More than 5 years"
+                          onChange={handleExperience}
+                        />
+                        <label for="More than 5 years">More than 5 years</label>
+                      </li>
+                    </ul>
                   </li>
                   <li className="li">
                     <label for="email" id="email-label" className="label-main">
-                      Have you taken the General IELTS?*
+                    Do you have any close family relatives in Canada such as parents or siblings?
                     </label>
                     <ul id="ielts" className="ul">
                       <li className="li-horiz input radio">
@@ -366,7 +537,7 @@ const Immigration = () => {
                           type="radio"
                           name="ielts"
                           value="yes"
-                          onChange={handleIeltsTaken}
+                          onChange={handleRelative}
                           className="master"
                         />
                         <label for="yes-ielts">Yes</label>
@@ -377,35 +548,67 @@ const Immigration = () => {
                           type="radio"
                           name="ielts"
                           value="no"
-                          onChange={handleIeltsTaken}
+                          onChange={handleRelative}
                         />
                         <label for="nor-ielts">No</label>
                       </li>
                     </ul>
                   </li>
+                  
+                </ul>
+              </div>
+              <div>
+                <ul className="ul">
                   <li className="li">
                     <label
-                      for="number"
-                      id="number-label"
+                      for="experience"
+                      id="experience-label"
                       className="label-main"
                     >
-                      What is Your IELTS score?
+                      What is your level of financial capacity for proof of
+                      settlement funds?*
                     </label>
-                    <input
-                      id="number"
-                      className="input-text"
-                      type="text"
-                      name="score"
-                      value={ieltsScore}
-                      onChange={(e)=>setIeltsScore(e.target.value)}
-                      placeholder="Your Answer"
-                      required
-                    />
+                    <ul
+                      id="financial"
+                      className="ul"
+                      style={{ whiteSpace: "nowrap", display: "grid" }}
+                    >
+                      <li className="li-horiz input radio">
+                        <input
+                          id="Less than 10k CAD"
+                          type="radio"
+                          name="expense"
+                          value="Less than 10k CAD"
+                          onChange={handleExpense}
+                          className="master"
+                        />
+                        <label for="Less than 10k CAD">Less than 10k CAD</label>
+                      </li>
+                      <li className="li-horiz input radio">
+                        <input
+                          id="10-20k CAD"
+                          type="radio"
+                          name="expense"
+                          value="10-20k CAD"
+                          onChange={handleExpense}
+                        />
+                        <label for="10-20k CAD">10-20k CAD</label>
+                      </li>
+                      <li className="li-horiz input radio">
+                        <input
+                          id="20k plus CAD"
+                          type="radio"
+                          name="expense"
+                          value="20k plus CAD"
+                          onChange={handleExpense}
+                        />
+                        <label for="20k plus CAD">20k plus CAD</label>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
-
-              <button id="submit" className="final-button" type="submit">
+              <button id="submit" className="final-button" type="submit" onClick={handleResponse}>
                 Submit
               </button>
             </form>

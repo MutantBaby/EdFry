@@ -247,3 +247,16 @@ border: 1px solid var(--neutral-n-500, #c1c4d6);
 a:hover {
   color: #0050f5;
 }
+
+.social-Login {
+  cursor: pointer;
+  display: flex;
+  /* width: 102px; */
+  padding: 6px 36px;
+  justify-content: center;
+  align-items: center;
+  /* gap: 216px; */
+  margin-top: 55px;
+  border-radius: 2px;
+  border: 1px solid var(--neutral-n-500, #c1c4d6);
+}
