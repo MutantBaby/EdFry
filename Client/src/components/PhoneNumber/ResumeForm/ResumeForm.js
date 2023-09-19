@@ -4,7 +4,7 @@ import Experience from "./Experience";
 import PersonalInfo from "./PersonalInfo";
 import "./resume.css";
 import Picture from "./Picture";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Navbar/Navbar";
 const ResumeForm = () => {
   const [educationSections, setEducationSections] = useState([
     <Education key={0} />,

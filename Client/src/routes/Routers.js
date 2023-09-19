@@ -23,48 +23,26 @@ import { useState } from "react";
 import { AuthContextProvider } from "../context/AuthContext";
 import Navbar2 from "../components/Navbar2/Navbar2";
 import Protected from "../context/Protected";
+import SurveyForm from "../SurveyForm";
+import FeedbackForm from "JUNK/FeedbackForm";
+import PDFTemplate from "JUNK/PDFTemplate";
+import PDFFile from "JUNK/PDFFile";
 
 const Routers = () => {
   return (
     <>
-      <AuthContextProvider>
-        <Navbar2 />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/immigration"
-            element={
-              <Protected>
-                <Immigration />
-              </Protected>
-            }
-          />
-          <Route
-            path="/admission"
-            element={
-              <Protected>
-                <Admission />
-              </Protected>
-            }
-          />
-          {/* <Route  path="/immigration" element={<Immigration/>}/>
-          <Route  path="/admission" element={<Admission/>}/> */}
-          {/* <Route path="/otpverify" component={Verification} />
-          <Route path="/home" component={Home} /> */}
-        </Routes>
-      </AuthContextProvider>
 
-      {/* <BrowserRouter>
+
       
-          <Route path="/nav" element={<Navbar />} />
-          <Route path="/" element={<Signup />} />
-          <Route path="/otp" element={<Verification />} />
-          <Route path="/home" element={<Home />} />
+      <Routes>
+          {/* <Route path="/nav" element={<Navbar />} /> */}
+          <Route path="/" element={<Home />} />
+           {/* <Route path="/otp" element={<Verification />} /> */}
+          {/* <Route path="/home" element={<Home />} /> */}
           <Route path="/immigration" element={<Immigration />} />
           <Route path="/admission" element={<Admission />} />
-        
-      </BrowserRouter> */}
+        </Routes>
+     
     </>
   );
 };

@@ -3,38 +3,36 @@ import "./Immigration.css";
 import Navbar2 from "../Navbar2/Navbar2";
 import SweetAlertService from "../../services/SweetAlert";
 const Immigration = () => {
-  const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [age, setAge] = useState("");
-  const [qualification, setQualification] = useState("");
-  const [cost, setCost] = useState("");
+  const [education, setQualification] = useState("");
+  const [funds, setFunds] = useState("");
   const [email, setEmail] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
+  const [firstName, setFname] = useState("");
+  const [lastName, setLname] = useState("");
   const [experience, setExperience] = useState("");
-  const [marriage, setMarriage] = useState("");
-  const [ieltsScore, setIeltsScore] = useState("");
-  const [family, setFamily] = useState("");
-  const [relative, setRelative] = useState("");
-  const [expense  , setExpense] = useState("")
+  const [martialStatus, setMarriage] = useState("");
+  const [familyUnitSize, setFamily] = useState("");
+  const [relatives, setRelative] = useState("");
+  const [financialCapacity, setExpense] = useState("");
   const handleIeltsTaken = (event) => {
     setMarriage(event.target.value);
   };
   const handleCost = (event) => {
-    setCost(event.target.value);
+    setFunds(event.target.value);
   };
   const handleQualification = (event) => {
     setQualification(event.target.value);
   };
-  const handleRelative = (event) =>{
-    setRelative(event.target.value)
-  }
-  const handleExperience = (event)=>{
-    setExperience(event.target.value)
-  }  
-  const handleExpense = (event) =>{
-    setExpense(event.target.value)
-  }
+  const handleRelative = (event) => {
+    setRelative(event.target.value);
+  };
+  const handleExperience = (event) => {
+    setExperience(event.target.value);
+  };
+  const handleExpense = (event) => {
+    setExpense(event.target.value);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -48,14 +46,18 @@ const Immigration = () => {
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
           },
           body: JSON.stringify({
-            age,
+            email,
+            firstName,
+            lastName,
             contact,
-            cost,
+            age,
+            martialStatus,
+            familyUnitSize,
+            funds,
+            education,
             experience,
-            ieltsScore,
-            marriage,
-            name,
-            qualification,
+            relatives,
+            financialCapacity,
           }),
         }
       );
@@ -69,9 +71,12 @@ const Immigration = () => {
       console.error("Error:", error);
     }
   };
-  const handleResponse = () =>{
-    SweetAlertService.success("Congrats","Your Response has been submitted successfully")
-  }
+  const handleResponse = () => {
+    SweetAlertService.success(
+      "Congrats",
+      "Your Response has been submitted successfully"
+    );
+  };
   return (
     <>
       {/* <div classNameName="form-container">
@@ -163,7 +168,7 @@ const Immigration = () => {
       </form>
     </div> */}
 
- 
+      <Navbar2 />
       <div className="contain">
         <div className="content">
           <header className="header">
@@ -208,33 +213,33 @@ const Immigration = () => {
                     />
                   </li>
                   <li className="li">
-                    <label for="fname" id="fname-label" className="label-main">
+                    <label for="firstName" id="firstName-label" className="label-main">
                       First Name
                     </label>
                     <input
                       autofocus
-                      id="fname"
+                      id="firstName"
                       className="input-text"
                       type="text"
-                      name="fname"
+                      name="firstName"
                       placeholder="Your furst name"
-                      value={fname}
+                      value={firstName}
                       onChange={(e) => setFname(e.target.value)}
                       required
                     />
                   </li>
                   <li className="li">
-                    <label for="lname" id="lname-label" className="label-main">
+                    <label for="lastName" id="lastName-label" className="label-main">
                       Last Name
                     </label>
                     <input
                       autofocus
-                      id="lname"
+                      id="lastName"
                       className="input-text"
                       type="text"
                       name="lanem"
                       placeholder="Your last name"
-                      value={lname}
+                      value={lastName}
                       onChange={(e) => setLname(e.target.value)}
                       required
                     />
@@ -277,33 +282,33 @@ const Immigration = () => {
                     <label for="email" id="email-label" className="label-main">
                       What is Your Martial Status
                     </label>
-                    <ul id="marriage" className="ul">
+                    <ul id="martialStatus" className="ul">
                       <li className="li-horiz input radio">
                         <input
-                          id="yes-marriage"
+                          id="yes-martialStatus"
                           type="radio"
-                          name="marriage"
+                          name="martialStatus"
                           value="Single"
                           onChange={handleIeltsTaken}
                           className="master"
                         />
-                        <label for="yes-marriage">Single</label>
+                        <label for="yes-martialStatus">Single</label>
                       </li>
                       <li className="li-horiz input radio">
                         <input
-                          id="nor-marriage"
+                          id="nor-martialStatus"
                           type="radio"
-                          name="marriage"
+                          name="martialStatus"
                           value="Married"
                           onChange={handleIeltsTaken}
                         />
-                        <label for="nor-marriage">Married</label>
+                        <label for="nor-martialStatus">Married</label>
                       </li>
                       <li className="li-horiz input radio">
                         <input
                           id="not-engaged"
                           type="radio"
-                          name="marriage"
+                          name="martialStatus"
                           value="Engaged"
                           onChange={handleIeltsTaken}
                         />
@@ -329,7 +334,7 @@ const Immigration = () => {
                       type="text"
                       name="age"
                       placeholder="Your Answer"
-                      value={family}
+                      value={familyUnitSize}
                       onChange={(e) => setFamily(e.target.value)}
                       required
                     />
@@ -355,16 +360,16 @@ const Immigration = () => {
                 </div>
               </div> */}
               <div className="separator">
-                <label for="cost" className="label-main">
-                  Beyond proof of settlement funds, you must also ensure that<br/>
+                <label for="funds" className="label-main">
+                  Beyond proof of settlement funds, you must also ensure that
+                  <br />
                   you have enough funds to cover service and government fee.
                 </label>
                 <ul>
                   <li style={{ listStyle: "none" }}>
                     1) Degree equivalency: $350 USD
                   </li>
-                  <li style={{ listStyle: "none" }}>
-                    2) ILETS: $55,000 PKR</li>
+                  <li style={{ listStyle: "none" }}>2) ILETS: $55,000 PKR</li>
                   <li style={{ listStyle: "none" }}>
                     3) Professional Fee: Starts from $2,500 CAD
                   </li>
@@ -373,12 +378,12 @@ const Immigration = () => {
                   </li>
                 </ul>
 
-                <ul id="cost" className="ul">
+                <ul id="funds" className="ul">
                   <li className="li-horiz input radio">
                     <input
                       id="yes"
                       type="radio"
-                      name="cost"
+                      name="funds"
                       value="yes"
                       onChange={handleCost}
                       className="master"
@@ -389,7 +394,7 @@ const Immigration = () => {
                     <input
                       id="no"
                       type="radio"
-                      name="cost"
+                      name="funds"
                       value="no"
                       onChange={handleCost}
                     />
@@ -399,7 +404,7 @@ const Immigration = () => {
                     <input
                       id="maybe"
                       type="radio"
-                      name="cost"
+                      name="funds"
                       value="maybe"
                       onChange={handleCost}
                     />
@@ -408,11 +413,11 @@ const Immigration = () => {
                 </ul>
               </div>
               <div className="separator">
-                <label for="qualification" className="label-main">
+                <label for="education" className="label-main">
                   What is your highest level of education? *
                 </label>
                 <ul
-                  id="qualification"
+                  id="education"
                   className="ul"
                   style={{ whiteSpace: "nowrap", display: "grid" }}
                 >
@@ -420,7 +425,7 @@ const Immigration = () => {
                     <input
                       id="highSchool"
                       type="radio"
-                      name="qualification"
+                      name="education"
                       value="highSchool"
                       onChange={handleQualification}
                       className="master"
@@ -431,7 +436,7 @@ const Immigration = () => {
                     <input
                       id="diploma or certificate"
                       type="radio"
-                      name="qualification"
+                      name="education"
                       value="diploma or certificate"
                       onChange={handleQualification}
                     />
@@ -443,7 +448,7 @@ const Immigration = () => {
                     <input
                       id="3year undergrad degree"
                       type="radio"
-                      name="qualification"
+                      name="education"
                       value="3year undergrad degree"
                     />
                     <label for="3year undergrad degree">
@@ -455,7 +460,7 @@ const Immigration = () => {
                     <input
                       id="master's"
                       type="radio"
-                      name="qualification"
+                      name="education"
                       value="master's"
                       onChange={handleQualification}
                     />
@@ -465,7 +470,7 @@ const Immigration = () => {
                     <input
                       id="Phd"
                       type="radio"
-                      name="qualification"
+                      name="education"
                       value="Phd"
                       onChange={handleQualification}
                     />
@@ -528,33 +533,33 @@ const Immigration = () => {
                   </li>
                   <li className="li">
                     <label for="email" id="email-label" className="label-main">
-                    Do you have any close family relatives in Canada such as parents or siblings?
+                      Do you have any close family relatives in Canada such as
+                      parents or siblings?
                     </label>
-                    <ul id="ielts" className="ul">
+                    <ul id="relatives" className="ul">
                       <li className="li-horiz input radio">
                         <input
-                          id="yes-ielts"
+                          id="Relative Exist"
                           type="radio"
-                          name="ielts"
+                          name="relatives"
                           value="yes"
                           onChange={handleRelative}
                           className="master"
                         />
-                        <label for="yes-ielts">Yes</label>
+                        <label for="Relative Exist">Yes</label>
                       </li>
                       <li className="li-horiz input radio">
                         <input
-                          id="nor-ielts"
+                          id="Relative Not Exist"
                           type="radio"
-                          name="ielts"
+                          name="relatives"
                           value="no"
                           onChange={handleRelative}
                         />
-                        <label for="nor-ielts">No</label>
+                        <label for="Relative Not Exist">No</label>
                       </li>
                     </ul>
                   </li>
-                  
                 </ul>
               </div>
               <div>
@@ -577,7 +582,7 @@ const Immigration = () => {
                         <input
                           id="Less than 10k CAD"
                           type="radio"
-                          name="expense"
+                          name="financialCapacity"
                           value="Less than 10k CAD"
                           onChange={handleExpense}
                           className="master"
@@ -588,7 +593,7 @@ const Immigration = () => {
                         <input
                           id="10-20k CAD"
                           type="radio"
-                          name="expense"
+                          name="financialCapacity"
                           value="10-20k CAD"
                           onChange={handleExpense}
                         />
@@ -598,7 +603,7 @@ const Immigration = () => {
                         <input
                           id="20k plus CAD"
                           type="radio"
-                          name="expense"
+                          name="financialCapacity"
                           value="20k plus CAD"
                           onChange={handleExpense}
                         />
@@ -608,7 +613,12 @@ const Immigration = () => {
                   </li>
                 </ul>
               </div>
-              <button id="submit" className="final-button" type="submit" onClick={handleResponse}>
+              <button
+                id="submit"
+                className="final-button"
+                type="submit"
+                onClick={handleResponse}
+              >
                 Submit
               </button>
             </form>

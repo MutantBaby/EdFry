@@ -1,4 +1,4 @@
-import { resume } from "../../assets/svgs/resume";
+import { resume } from "../../../assets/svgs/resume";
 
 const Picture = () => {
   return (

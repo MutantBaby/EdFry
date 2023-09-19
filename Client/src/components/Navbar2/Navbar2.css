@@ -1,14 +1,11 @@
-
-
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: white;
   color: white;
   padding: 10px 20px;
 }
-
 .navbar-logo img {
   max-width: 100px;
 }
@@ -31,7 +28,7 @@
 }
 
 .login-button {
-  background-color: #0050F5;
+  background-color: #0050f5;
   color: white;
   border: none;
   border-radius: 5px;
@@ -74,9 +71,6 @@
   }
 }
 
-
-
-
 .card-container {
   display: flex;
   justify-content: center;
@@ -106,59 +100,54 @@
   }
 }
 
-
-
-
-
-
-.cardClass{
+.cardClass {
   list-style: none;
   display: flex;
   align-items: center;
 }
-.display-picture{
+.display-picture {
   margin-left: auto;
 }
-.display-picture img{
+.display-picture img {
   width: 50px;
   border-radius: 50%;
-  border:2px solid #fff;
+  border: 2px solid #fff;
 }
-.display-picture img:hover{
-border:2px solid #0052f4;
+.display-picture img:hover {
+  border: 2px solid #0052f4;
 }
-.cards{
+.cards {
   transition: 0.5s ease;
 }
 
-.cards .cardClass{
+.cards .cardClass {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   background: #0052f4;
   position: absolute;
   top: 4rem;
-  right:0rem;
-border-radius: 10px;
-padding: 10px 50px 10px 20px;
+  right: 0rem;
+  border-radius: 10px;
+  padding: 10px 50px 10px 20px;
 }
-.cards  .cardClass .cardList{
- 
+.cards .cardClass .cardList {
   padding: 5px 0;
-  color: #FFF;
+  color: #fff;
   font-size: 14px;
 }
-.hiddens{
+.hiddens {
   display: none;
 }
-.cardLink
-{
+.cardLink {
   text-decoration: none;
-  color:#fff;
+  color: #fff;
 }
 
-.cardLink :hover
-{
-  
-  color:red;
+.navbar-item {
+  color: #000;
+}
+
+.navbar-item.active a {
+  color: #007bff;
 }
