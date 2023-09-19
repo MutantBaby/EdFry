@@ -2147,12 +2147,20 @@
     "@progress/kendo-draggable-common" "^0.2.3"
     prop-types "^15.6.0"
 
-"@progress/kendo-react-data-tools@^5.0.0":
-  version "5.17.0"
-  resolved "https://registry.npmjs.org/@progress/kendo-react-data-tools/-/kendo-react-data-tools-5.17.0.tgz"
-  integrity sha512-bJ0DXmIac6CLmV7CdG+BGLvHXcltKzbcKQ0dpJnxkTebnr4V7iQ1YVDMBY2Znrl7pl+DwmCD1frSQpzG9BcWMg==
+"@progress/kendo-react-common@5.18.0":
+  version "5.18.0"
+  resolved "https://registry.npmjs.org/@progress/kendo-react-common/-/kendo-react-common-5.18.0.tgz"
+  integrity sha512-VQ7sksTS8WG8YuiolttI7aKZ79ZKa8Fxm+r01BIbH9HA5+QMsIimma9JqbCsmqI1UdaNEKmRYOE7EyAykdJ0uQ==
   dependencies:
-    "@progress/kendo-react-common" "5.17.0"
+    "@progress/kendo-draggable-common" "^0.2.3"
+    prop-types "^15.6.0"
+
+"@progress/kendo-react-data-tools@^5.0.0", "@progress/kendo-react-data-tools@^5.18.0":
+  version "5.18.0"
+  resolved "https://registry.npmjs.org/@progress/kendo-react-data-tools/-/kendo-react-data-tools-5.18.0.tgz"
+  integrity sha512-aS6ZIeCGoDLQhRXM7HViJ71ct/NjcaGLkOR6t/Ol7per/qAhvbd90Dwn3Zn/e1K5xo/HD4NvS/hszGDjbirc6Q==
+  dependencies:
+    "@progress/kendo-react-common" "5.18.0"
     prop-types "^15.6.0"
 
 "@progress/kendo-react-dateinputs@^5.0.0":
