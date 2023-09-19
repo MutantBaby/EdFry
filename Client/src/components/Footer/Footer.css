@@ -38,6 +38,7 @@
   line-height: 86px;
   /* font-weight: 400;
   font-size: 15px; */
+  white-space: nowrap;
 }
 
 .footer address {

@@ -2,11 +2,14 @@ import "./style.css";
 
 import img1 from "../../assets/svgs/img1.jpg";
 import img2 from "../../assets/svgs/img2.png";
+import original from "../../assets/svgs/original.png"
 import sec7_p1 from "../../assets/svgs/sec7_p1.jpg";
 import sec7_p2 from "../../assets/svgs/sec7_p2.jpg";
 import sec7_p3 from "../../assets/svgs/sec7_p3.jpg";
 import groupImg from "../../assets/svgs/groupImg.jpg";
-
+import yahya from "../../assets/svgs/yahya.jpg"
+import minahil from "../../assets/svgs/minahil.jpg"
+import qasim from "../../assets/svgs/qasim.jpg"
 import { world_map } from "../../assets/svgs/world_map";
 import { img1_frame } from "../../assets/svgs/img1_frame";
 import { img2_frame } from "../../assets/svgs/img2_frame";

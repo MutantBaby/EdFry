@@ -66,7 +66,7 @@ const Admission = () => {
   }
   return (
     <>
-      {/* <Navbar2 /> */}
+      <Navbar2 />
       <div className="contain">
         <div className="content">
           <header className="header">

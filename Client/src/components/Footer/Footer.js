@@ -8,13 +8,16 @@ import { snapchat } from "../../assets/svgs/snapchat";
 import { twitter } from "../../assets/svgs/twitter";
 import { whatsapp } from "../../assets/svgs/whatsapp";
 import { youtube } from "../../assets/svgs/youtube";
+import edfry from "../../assets/svgs/Group 5086.png";
 import "./Footer.css";
 const Footer = () => {
   return (
     <>
       <footer className="footer">
         <div className="footer__addr">
-          <h1 className="footer__logo">{logo}</h1>
+          <h1 className="footer__logo">
+            <img src={edfry} />
+          </h1>
 
           <p className="footer_text">Terms of Services | Privacy Policy</p>
 
@@ -24,15 +27,24 @@ const Footer = () => {
               <a href="#" className="icon">
                 {whatsapp}
               </a>
-              <a href="https://instagram.com/edfry.i?igshid=MzRlODBiNWFlZA==" className="icon">
+              <a
+                href="https://instagram.com/edfry.i?igshid=MzRlODBiNWFlZA=="
+                className="icon"
+              >
                 {massenger}
               </a>
-              <a href="https://instagram.com/edfry.i?igshid=MzRlODBiNWFlZA==" className="icon">
+              <a
+                href="https://instagram.com/edfry.i?igshid=MzRlODBiNWFlZA=="
+                className="icon"
+              >
                 {instagram}
               </a>
             </div>
             <div className="icon-row">
-              <a href="https://www.youtube.com/@edfry.tutoring" className="icon">
+              <a
+                href="https://www.youtube.com/@edfry.tutoring"
+                className="icon"
+              >
                 {youtube}
               </a>
               <a href="#" className="icon">
@@ -88,7 +100,7 @@ const Footer = () => {
             </ul>
           </li>
 
-          <li className="nav__item ">
+          <li className="nav__item" style={{ marginLeft: "88px" }}>
             <h2 className="nav__title">Get to know us</h2>
             <ul className="nav__ul">
               <li>
