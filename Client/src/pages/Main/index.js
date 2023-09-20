@@ -2,14 +2,14 @@ import "./style.css";
 
 import img1 from "../../assets/svgs/img1.jpg";
 import img2 from "../../assets/svgs/img2.png";
-import original from "../../assets/svgs/original.png";
+import original from "../../assets/svgs/original.png"
 import sec7_p1 from "../../assets/svgs/sec7_p1.jpg";
 import sec7_p2 from "../../assets/svgs/sec7_p2.jpg";
 import sec7_p3 from "../../assets/svgs/sec7_p3.jpg";
 import groupImg from "../../assets/svgs/groupImg.jpg";
-import yahya from "../../assets/svgs/yahya.jpg";
-import minahil from "../../assets/svgs/minahil.jpg";
-import qasim from "../../assets/svgs/qasim.jpg";
+import yahya from "../../assets/svgs/yahya.jpg"
+import minahil from "../../assets/svgs/minahil.jpg"
+import qasim from "../../assets/svgs/qasim.jpg"
 import { world_map } from "../../assets/svgs/world_map";
 import { img1_frame } from "../../assets/svgs/img1_frame";
 import { img2_frame } from "../../assets/svgs/img2_frame";
@@ -87,7 +87,7 @@ const MainPage = () => {
             />
           </div>
 
-          <h1 className="h1_padding">
+          <h1>
             Start learning <br /> with Edfry
           </h1>
         </div>
@@ -98,15 +98,15 @@ const MainPage = () => {
 
         <div className="mainPage--portion section1_portion2">
           <div className="section3">
-            <h1 className="h1_padding">
+            <h1>
               Mentors from all over <br /> the world
             </h1>
 
             <div className="inner_portion1 updated">
               <p>
-                View mentor profiles and contact any skilled tutor according{" "}
-                <br /> to your criteria (rates, certification, reviews, <br />{" "}
-                at home or online lessons)
+                View mentor profiles and contact any skilled tutor <br />{" "}
+                according to your criteria (rates, certification, <br />
+                reviews, at home or online lessons)
               </p>
               <button>Find Tutor</button>
             </div>
@@ -115,10 +115,10 @@ const MainPage = () => {
       </div>
 
       <div className="section2 section4">
-        <div className="section2_inner section4_updated">
+        <div className="section2_inner ">
           <CompContainer />
 
-          <h1 className="h1_padding">Where our tutors come from</h1>
+          <h1>Where our tutors come from</h1>
         </div>
       </div>
 
