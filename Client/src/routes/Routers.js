@@ -24,9 +24,7 @@ import { AuthContextProvider } from "../context/AuthContext";
 import Navbar2 from "../components/Navbar2/Navbar2";
 import Protected from "../context/Protected";
 import SurveyForm from "../SurveyForm";
-import FeedbackForm from "JUNK/FeedbackForm";
-import PDFTemplate from "JUNK/PDFTemplate";
-import PDFFile from "JUNK/PDFFile";
+
 
 const Routers = () => {
   return (
