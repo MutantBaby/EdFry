@@ -7,9 +7,7 @@ import sec4_nasa from "../../assets/svgs/sec4_nasa.jpg";
 import sec4_bingo from "../../assets/svgs/sec4_bingo.jpg";
 import sec4_razer from "../../assets/svgs/sec4_razer.jpg";
 import sec4_huawei from "../../assets/svgs/sec4_huawei.jpg";
-import lums from "../../assets/svgs/lums.png"
-import umich from "../../assets/svgs/umich2.png"
-import averou from "../../assets/svgs/averou.png"
+
 import { sec6_clock } from "../../assets/svgs/sec6_clock";
 
 export const ImageContainer = ({ img, img_frame, clsStr1 }) => {
@@ -43,13 +41,25 @@ export const CompContainer = () => {
   return (
     <div className="section2_inner_container section4_outer">
       <div className="section4_inner_style">
-        <img src={lums} alt="" />
+        <img src={sec4_girl} alt="" />
       </div>
       <div className="section4_inner_style">
-        <img src={umich} alt="" />
+        <img src={sec4_bingo} alt="" />
       </div>
       <div className="section4_inner_style">
-        <img src={averou} alt="" />
+        <img src={sec4_dell} alt="" />
+      </div>
+      <div className="section4_inner_style">
+        <img src={sec4_huawei} alt="" />
+      </div>
+      <div className="section4_inner_style">
+        <img src={sec4_mac} alt="" />
+      </div>
+      <div className="section4_inner_style">
+        <img src={sec4_nasa} alt="" />
+      </div>
+      <div className="section4_inner_style">
+        <img src={sec4_razer} alt="" />
       </div>
     </div>
   );
