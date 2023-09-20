@@ -1,4 +1,5 @@
 <<<<<<< HEAD:.gitignore
+<<<<<<< HEAD:.gitignore
 # Logs
 logs
 *.log
@@ -132,3 +133,6 @@ dist
 =======
 node_modules
 >>>>>>> ad05ab640e045bb66db139fa796e220df737ac5f:Client/.gitignore
+=======
+node_modules
+>>>>>>> 273829530e8c5b511befaaca1895e68902542a9e:Client/.gitignore
