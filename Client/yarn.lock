@@ -2225,10 +2225,10 @@
     "@progress/kendo-react-popup" "5.17.0"
     prop-types "^15.6.0"
 
-"@progress/kendo-react-intl@^5.0.0":
-  version "5.17.0"
-  resolved "https://registry.npmjs.org/@progress/kendo-react-intl/-/kendo-react-intl-5.17.0.tgz"
-  integrity sha512-iB6XiKAQQK2DacW1wsNG/ScSLoDToKbz9nT4bGAj9hLJnuQ/gJ7eSQ+ZtbZ77OfbGg+hR0hjKQlbBdmVigp5MA==
+"@progress/kendo-react-intl@^5.0.0", "@progress/kendo-react-intl@^5.18.0":
+  version "5.18.0"
+  resolved "https://registry.npmjs.org/@progress/kendo-react-intl/-/kendo-react-intl-5.18.0.tgz"
+  integrity sha512-a6hyNYLw0p2ukaYNN1biyQDhu2wxQbpYfJD94EO/doO3597mnl6VmI86GC1CwamdcjLJ/+tx2m0BxadmfMLiKw==
   dependencies:
     "@progress/kendo-intl" "^3.1.1"
     prop-types "^15.6.0"
