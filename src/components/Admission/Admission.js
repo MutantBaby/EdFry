@@ -3,16 +3,17 @@ import "./admission.css";
 import Navbar2 from "../Navbar2/Navbar2";
 import SweetAlertService from "../../services/SweetAlert";
 const Admission = () => {
+  const items = ["One", "Two", "Three"];
   const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
+  const [contact, setContact] = useState([]);
   const [qualification, setQualification] = useState("");
-  const [level, setLevel] = useState("");
-  const [time, setTime] = useState("");
+  const [interestedEducation, setInterestedEducation] = useState("");
+  const [timeSlot, setTimeSlot] = useState("");
   const [country, setCountry] = useState("");
   const [budget, setBudget] = useState("");
-  const [interest, setInterest] = useState("");
+  const [program, setProgram] = useState("");
   const handleTime = (event) => {
-    setTime(event.target.value);
+    setTimeSlot(event.target.value);
   };
   const handleState = (event) => {
     setCountry(event.target.value);
@@ -21,49 +22,52 @@ const Admission = () => {
     setQualification(event.target.value);
   };
   const handleLevel = (event) => {
-    setLevel(event.target.value);
+    setInterestedEducation(event.target.value);
   };
   const handleBudget = (event) => {
     setBudget(event.target.value);
   };
   const handleInterests = (event) => {
-    setInterest(event.target.value);
+    setProgram(event.target.value);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/admission', {
-
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/api/admission", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          "Access-Control-Allow-Headers" : "Content-Type",
-          "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-      },
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        },
         body: JSON.stringify({
-         name ,
-         contact,
-         qualification,
-         level,
-         time,
-         country,
-         budget,
-         interest
+          name,
+          contact,
+          qualification,
+          interestedEducation,
+          timeSlot,
+          country,
+          budget,
+          program,
         }),
       });
-      console.log("DATA",response)
-    if (response.ok) {
-      console.log('User registered successfully',response);
-    } else {
-      console.error('Error registering user');
+      console.log("DATA", response);
+      if (response.ok) {
+        console.log("User registered successfully", response);
+      } else {
+        console.error("Error registering user");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
-  } catch (error) {
-    console.error('Error:', error);
-  }
   };
-  const handleResponse = () =>{
-    SweetAlertService.success("Congrats","Your Response has been submitted successfully")
-  }
+  const handleResponse = () => {
+    SweetAlertService.success(
+      "Congrats",
+      "Your Response has been submitted successfully"
+    );
+  };
+  console.log("CONTTTTTTTTTTTTTTTTTTTT", country);
   return (
     <>
       <Navbar2 />
@@ -83,15 +87,15 @@ const Admission = () => {
             <form onSubmit={handleSubmit} id="survey-form">
               <div>
                 <div class="separator">
-                  <label for="interests" class="label-main">
+                  <label for="country" class="label-main">
                     Country you're interested in *
                   </label>
-                  <ul id="interests" class="ul">
+                  <ul id="country" class="ul">
                     <li class="li-horiz input checkbox">
                       <input
                         id="usa"
                         type="checkbox"
-                        name="interests"
+                        name="country"
                         value="usa"
                         onChange={handleState}
                       />
@@ -101,7 +105,7 @@ const Admission = () => {
                       <input
                         id="uk"
                         type="checkbox"
-                        name="interests"
+                        name="country"
                         value="uk"
                         onChange={handleState}
                       />
@@ -111,7 +115,7 @@ const Admission = () => {
                       <input
                         id="europe"
                         type="checkbox"
-                        name="interests"
+                        name="country"
                         value="europe"
                         onChange={handleState}
                       />
@@ -121,7 +125,7 @@ const Admission = () => {
                       <input
                         id="austrailia"
                         type="checkbox"
-                        name="interests"
+                        name="country"
                         value="austrailia"
                         onChange={handleState}
                       />
@@ -131,7 +135,7 @@ const Admission = () => {
                       <input
                         id="canada"
                         type="checkbox"
-                        name="interests"
+                        name="country"
                         value="canada"
                         onChange={handleState}
                       />
@@ -141,7 +145,7 @@ const Admission = () => {
                       <input
                         id="other"
                         type="checkbox"
-                        name="interests"
+                        name="country"
                         value="other"
                         onChange={handleState}
                       />
@@ -151,15 +155,15 @@ const Admission = () => {
                 </div>
               </div>
               <div className="separator">
-                <label for="studies" className="label-main">
+                <label for="interestedEducation" className="label-main">
                   Level of Education you're interested in
                 </label>
-                <ul id="studies" className="ul">
+                <ul id="interestedEducation" className="ul">
                   <li className="li-horiz input radio">
                     <input
                       id="bachelors"
                       type="radio"
-                      name="studies"
+                      name="interestedEducation"
                       value="bachelors"
                       onChange={handleLevel}
                       className="master"
@@ -170,20 +174,26 @@ const Admission = () => {
                     <input
                       id="masters"
                       type="radio"
-                      name="studies"
+                      name="interestedEducation"
                       value="masters"
                       onChange={handleLevel}
                     />
                     <label for="masters">Masters</label>
                   </li>
                   <li className="li-horiz input radio">
-                    <input id="phd" type="radio" name="studies" value="phd" />
+                    <input
+                      id="phd"
+                      type="radio"
+                      name="interestedEducation"
+                      value="phd"
+                      onChange={handleLevel}
+                    />
                     <label for="phd">PhD</label>
                   </li>
                 </ul>
               </div>
               <div className="separator">
-                <label for="studies" className="label-main">
+                <label for="qualification" className="label-main">
                   Current Highest Qualification
                 </label>
                 <ul id="qualification" className="ul">
@@ -325,11 +335,11 @@ const Admission = () => {
                 </ul>
               </div>
               <div className="separator">
-                <label for="time" className="label-main">
-                  Preferred time for the Session [PST] *
+                <label for="timeSlot" className="label-main">
+                  Preferred timeSlot for the Session [PST] *
                 </label>
                 <ul
-                  id="time"
+                  id="timeSlot"
                   className="ul"
                   style={{ display: "grid", marginLeft: "23px" }}
                 >
@@ -337,7 +347,7 @@ const Admission = () => {
                     <input
                       id="3:00-4:00pm"
                       type="radio"
-                      name="time"
+                      name="timeSlot"
                       value="3:00-4:00pm"
                       onChange={handleTime}
                       className="master"
@@ -351,7 +361,7 @@ const Admission = () => {
                     <input
                       id="4:00-5:00pm"
                       type="radio"
-                      name="time"
+                      name="timeSlot"
                       value="4:00-5:00pm"
                       onChange={handleTime}
                       className="master"
@@ -365,7 +375,7 @@ const Admission = () => {
                     <input
                       id="5:00-6:00pm"
                       type="radio"
-                      name="time"
+                      name="timeSlot"
                       value="5:00-6:00pm"
                       onChange={handleTime}
                       className="master"
@@ -379,7 +389,7 @@ const Admission = () => {
                     <input
                       id="6:00-7:00pm"
                       type="radio"
-                      name="time"
+                      name="timeSlot"
                       value="6:00-7:00pm"
                       onChange={handleTime}
                       className="master"
@@ -393,7 +403,7 @@ const Admission = () => {
                     <input
                       id="7:00-8:00pm"
                       type="radio"
-                      name="time"
+                      name="timeSlot"
                       value="7:00-8:00pm"
                       onChange={handleTime}
                       className="master"
@@ -407,7 +417,7 @@ const Admission = () => {
                     <input
                       id="8:00-9:00pm"
                       type="radio"
-                      name="time"
+                      name="timeSlot"
                       value="8:00-9:00pm"
                       onChange={handleTime}
                       className="master"
@@ -421,7 +431,7 @@ const Admission = () => {
                     <input
                       id="other"
                       type="radio"
-                      name="time"
+                      name="timeSlot"
                       value="other"
                       onChange={handleTime}
                       className="master"
@@ -613,7 +623,12 @@ const Admission = () => {
                 </ul>
               </div>
 
-              <button id="submit" className="final-button" type="submit" onClick={handleResponse}>
+              <button
+                id="submit"
+                className="final-button"
+                type="submit"
+                onClick={handleResponse}
+              >
                 Submit
               </button>
             </form>
