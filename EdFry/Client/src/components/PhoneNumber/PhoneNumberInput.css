@@ -1,0 +1,42 @@
+.phone-input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    color: var(--neutral-n-700, #696f8c);
+    font-family: "Inter";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 13px;
+  }
+  
+  .PhoneInput {
+    /* width: 348px; */
+    height: 40px;
+    /* flex-shrink: 0; */
+    border-radius: 8px;
+    background: #ebf0ff;
+    font-size: 16px;
+    font-style: normal;
+    /* font-weight: 400; */
+    /* line-height: 24px; */
+    /* margin-top: 13px; */
+    border: 1px solid white;
+  }
+  .PhoneInputInput {
+        /* width: 348px; */
+        height: 40px;
+        /* flex-shrink: 0; */
+        border-radius: 8px;
+        background: #ebf0ff;
+        font-size: 16px;
+        font-style: normal;
+        /* font-weight: 400; */
+        /* line-height: 24px; */
+        /* margin-top: 13px; */
+        border: 1px solid white;
+  }
