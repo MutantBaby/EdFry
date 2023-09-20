@@ -1,80 +1,80 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Immigration.css";
 import Navbar2 from "../Navbar2/Navbar2";
 import SweetAlertService from "../../services/SweetAlert";
 const Immigration = () => {
-  const [contact, setContact] = useState("");
-  const [age, setAge] = useState("");
-  const [education, setQualification] = useState("");
-  const [funds, setFunds] = useState("");
-  const [email, setEmail] = useState("");
-  const [firstName, setFname] = useState("");
-  const [lastName, setLname] = useState("");
-  const [experience, setExperience] = useState("");
-  const [martialStatus, setMarriage] = useState("");
-  const [familyUnitSize, setFamily] = useState("");
-  const [relatives, setRelative] = useState("");
-  const [financialCapacity, setExpense] = useState("");
-  const handleIeltsTaken = (event) => {
-    setMarriage(event.target.value);
-  };
-  const handleCost = (event) => {
-    setFunds(event.target.value);
-  };
-  const handleQualification = (event) => {
-    setQualification(event.target.value);
-  };
-  const handleRelative = (event) => {
-    setRelative(event.target.value);
-  };
-  const handleExperience = (event) => {
-    setExperience(event.target.value);
-  };
-  const handleExpense = (event) => {
-    setExpense(event.target.value);
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(
-        "https://edfry-backend.vercel.app/api/immigration",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            firstName,
-            lastName,
-            contact,
-            age,
-            martialStatus,
-            familyUnitSize,
-            funds,
-            education,
-            experience,
-            relatives,
-            financialCapacity,
-          }),
-        }
-      );
-      console.log("RESPO", response);
-      if (response.ok) {
-        console.log("User registered successfully");
-      } else {
-        console.error("Error registering user");
-      }
-    } catch (error) {
-      console.error("Error:", error);
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    contact: "",
+    age: "",
+    martialStatus: "",
+    familyUnitSize: "",
+    funds: "",
+    education: "",
+    experience: "",
+    relatives: "",
+    financialCapacity: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  useEffect(() => {
+    setErrors({});
+  }, []);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
     }
   };
-  const handleResponse = () => {
-    SweetAlertService.success(
-      "Congrats",
-      "Your Response has been submitted successfully"
-    );
+ const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = {};
+    for (const field in formData) {
+      if (!formData[field]) {
+        validationErrors[field] = `${
+          field.charAt(0).toUpperCase() + field.slice(1)
+        } is required.`;
+      }
+    }
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      try {
+        const response = await fetch(
+          "https://edfry-backend.vercel.app/api/immigration",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              formData,
+            }),
+          }
+        );
+        console.log("RESPO", response);
+        if (response.ok) {
+          console.log("User registered successfully");
+        } else {
+          console.error("Error registering user");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+      console.log("Form data submitted:");
+    }
   };
+  const handleResponse = () => {};
   return (
     <>
       {/* <div classNameName="form-container">
@@ -199,48 +199,65 @@ const Immigration = () => {
                       Email
                     </label>
                     <input
-                      autofocus
-                      id="email"
-                      className="input-text"
-                      type="text"
-                      name="name"
+                      type="email"
+                      name="email"
                       placeholder="Your Email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={
+                        errors.email ? "input-text-error" : "input-text"
+                      }
                     />
+                    {errors.email && (
+                      <div className="error-text">{errors.email}</div>
+                    )}
                   </li>
                   <li className="li">
-                    <label for="firstName" id="firstName-label" className="label-main">
+                    <label
+                      for="firstName"
+                      id="firstName-label"
+                      className="label-main"
+                    >
                       First Name
                     </label>
                     <input
                       autofocus
                       id="firstName"
-                      className="input-text"
                       type="text"
                       name="firstName"
                       placeholder="Your furst name"
-                      value={firstName}
-                      onChange={(e) => setFname(e.target.value)}
-                      required
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      className={
+                        errors.firstName ? "input-text-error" : "input-text"
+                      }
                     />
+                    {errors.firstName && (
+                      <div className="error-text">{errors.firstName}</div>
+                    )}
                   </li>
                   <li className="li">
-                    <label for="lastName" id="lastName-label" className="label-main">
+                    <label
+                      for="lastName"
+                      id="lastName-label"
+                      className="label-main"
+                    >
                       Last Name
                     </label>
                     <input
-                      autofocus
                       id="lastName"
-                      className="input-text"
                       type="text"
-                      name="lanem"
+                      name="lastName"
                       placeholder="Your last name"
-                      value={lastName}
-                      onChange={(e) => setLname(e.target.value)}
-                      required
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      className={
+                        errors.lastName ? "input-text-error" : "input-text"
+                      }
                     />
+                    {errors.lastName && (
+                      <div className="error-text">{errors.lastName}</div>
+                    )}
                   </li>
                   <li className="li">
                     <label for="email" id="email-label" className="label-main">
@@ -248,14 +265,18 @@ const Immigration = () => {
                     </label>
                     <input
                       id="contact"
-                      className="input-text"
                       type="text"
                       name="contact"
                       placeholder="Your contact"
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
-                      required
+                      value={formData.contact}
+                      onChange={handleChange}
+                      className={
+                        errors.contact ? "input-text-error" : "input-text"
+                      }
                     />
+                    {errors.contact && (
+                      <div className="error-text">{errors.contact}</div>
+                    )}
                   </li>
                   <li className="li">
                     <label
@@ -267,14 +288,16 @@ const Immigration = () => {
                     </label>
                     <input
                       id="number"
-                      className="input-text"
                       type="text"
                       name="age"
                       placeholder="Your age"
-                      value={age}
-                      onChange={(e) => setAge(e.target.value)}
-                      required
+                      value={formData.age}
+                      onChange={handleChange}
+                      className={errors.age ? "input-text-error" : "input-text"}
                     />
+                    {errors.age && (
+                      <div className="error-text">{errors.age}</div>
+                    )}
                   </li>
                   <li className="li">
                     <label for="email" id="email-label" className="label-main">
@@ -287,8 +310,8 @@ const Immigration = () => {
                           type="radio"
                           name="martialStatus"
                           value="Single"
-                          onChange={handleIeltsTaken}
-                          className="master"
+                          onChange={handleChange}
+                          className={errors.martialStatus ? "error" : "master"}
                         />
                         <label for="yes-martialStatus">Single</label>
                       </li>
@@ -298,7 +321,8 @@ const Immigration = () => {
                           type="radio"
                           name="martialStatus"
                           value="Married"
-                          onChange={handleIeltsTaken}
+                          onChange={handleChange}
+                          className={errors.martialStatus ? "error" : "master"}
                         />
                         <label for="nor-martialStatus">Married</label>
                       </li>
@@ -308,11 +332,15 @@ const Immigration = () => {
                           type="radio"
                           name="martialStatus"
                           value="Engaged"
-                          onChange={handleIeltsTaken}
+                          onChange={handleChange}
+                          className={errors.martialStatus ? "error" : "master"}
                         />
                         <label for="not-engaged">Engaged</label>
                       </li>
                     </ul>
+                    {errors.martialStatus && (
+                      <div className="error-text">{errors.martialStatus}</div>
+                    )}
                   </li>
                   <li className="li">
                     <label
@@ -328,14 +356,18 @@ const Immigration = () => {
                     </label>
                     <input
                       id="number"
-                      className="input-text"
                       type="text"
-                      name="age"
+                      name="familyUnitSize"
                       placeholder="Your Answer"
-                      value={familyUnitSize}
-                      onChange={(e) => setFamily(e.target.value)}
-                      required
+                      value={formData.familyUnitSize}
+                      onChange={handleChange}
+                      className={
+                        errors.familyUnitSize ? "input-text-error" : "input-text"
+                      }
                     />
+                    {errors.familyUnitSize && (
+                      <div className="error-text">{errors.familyUnitSize}</div>
+                    )}
                   </li>
                 </ul>
               </div>
@@ -383,8 +415,8 @@ const Immigration = () => {
                       type="radio"
                       name="funds"
                       value="yes"
-                      onChange={handleCost}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.funds ? "input-text-error" : "error"}
                     />
                     <label for="yes">Yes</label>
                   </li>
@@ -394,7 +426,8 @@ const Immigration = () => {
                       type="radio"
                       name="funds"
                       value="no"
-                      onChange={handleCost}
+                      onChange={handleChange}
+                      className={errors.funds ? "input-text-error" : "error"}
                     />
                     <label for="no">No</label>
                   </li>
@@ -404,10 +437,14 @@ const Immigration = () => {
                       type="radio"
                       name="funds"
                       value="maybe"
-                      onChange={handleCost}
+                      onChange={handleChange}
+                      className={errors.funds ? "input-text-error" : "error"}
                     />
                     <label for="maybe">Maybe</label>
                   </li>
+                  {errors.funds && (
+                    <div className="error-text">{errors.funds}</div>
+                  )}
                 </ul>
               </div>
               <div className="separator">
@@ -425,8 +462,10 @@ const Immigration = () => {
                       type="radio"
                       name="education"
                       value="highSchool"
-                      onChange={handleQualification}
-                      className="master"
+                      onChange={handleChange}
+                      className={
+                        errors.education ? "input-text-error" : "error"
+                      }
                     />
                     <label for="highSchool">High School or Less</label>
                   </li>
@@ -436,7 +475,10 @@ const Immigration = () => {
                       type="radio"
                       name="education"
                       value="diploma or certificate"
-                      onChange={handleQualification}
+                      onChange={handleChange}
+                      className={
+                        errors.education ? "input-text-error" : "error"
+                      }
                     />
                     <label for="diploma or certificate">
                       One to two year diploma or certificate
@@ -448,6 +490,10 @@ const Immigration = () => {
                       type="radio"
                       name="education"
                       value="3year undergrad degree"
+                      onChange={handleChange}
+                      className={
+                        errors.education ? "input-text-error" : "error"
+                      }
                     />
                     <label for="3year undergrad degree">
                       Three or more year diploma, certificate, or undergraduate
@@ -460,7 +506,10 @@ const Immigration = () => {
                       type="radio"
                       name="education"
                       value="master's"
-                      onChange={handleQualification}
+                      onChange={handleChange}
+                      className={
+                        errors.education ? "input-text-error" : "error"
+                      }
                     />
                     <label for="master's">Master's Degree</label>
                   </li>
@@ -470,11 +519,17 @@ const Immigration = () => {
                       type="radio"
                       name="education"
                       value="Phd"
-                      onChange={handleQualification}
+                      onChange={handleChange}
+                      className={
+                        errors.education ? "input-text-error" : "error"
+                      }
                     />
                     <label for="Phd">Doctoral Degree (PhD)</label>
                   </li>
                 </ul>
+                {errors.education && (
+                  <div className="error-text">{errors.education}</div>
+                )}
               </div>
 
               <div>
@@ -498,8 +553,10 @@ const Immigration = () => {
                           type="radio"
                           name="experience"
                           value="lessthan 6 months"
-                          onChange={handleExperience}
-                          className="master"
+                          onChange={handleChange}
+                          className={
+                            errors.experience ? "input-text-error" : "error"
+                          }
                         />
                         <label for="lessthan 6 months">
                           Less than 6 months.
@@ -511,7 +568,10 @@ const Immigration = () => {
                           type="radio"
                           name="experience"
                           value="6 months to 5 years"
-                          onChange={handleExperience}
+                          onChange={handleChange}
+                          className={
+                            errors.experience ? "input-text-error" : "error"
+                          }
                         />
                         <label for="6 months to 5 years">
                           6 months to 5 years
@@ -523,11 +583,17 @@ const Immigration = () => {
                           type="radio"
                           name="experience"
                           value="More than 5 years"
-                          onChange={handleExperience}
+                          onChange={handleChange}
+                          className={
+                            errors.experience ? "input-text-error" : "error"
+                          }
                         />
                         <label for="More than 5 years">More than 5 years</label>
                       </li>
                     </ul>
+                    {errors.experience && (
+                      <div className="error-text">{errors.experience}</div>
+                    )}
                   </li>
                   <li className="li">
                     <label for="email" id="email-label" className="label-main">
@@ -541,8 +607,10 @@ const Immigration = () => {
                           type="radio"
                           name="relatives"
                           value="yes"
-                          onChange={handleRelative}
-                          className="master"
+                          onChange={handleChange}
+                          className={
+                            errors.relatives ? "input-text-error" : "error"
+                          }
                         />
                         <label for="Relative Exist">Yes</label>
                       </li>
@@ -552,11 +620,17 @@ const Immigration = () => {
                           type="radio"
                           name="relatives"
                           value="no"
-                          onChange={handleRelative}
+                          onChange={handleChange}
+                          className={
+                            errors.relatives ? "input-text-error" : "error"
+                          }
                         />
                         <label for="Relative Not Exist">No</label>
                       </li>
                     </ul>
+                    {errors.relatives && (
+                      <div className="error-text">{errors.relatives}</div>
+                    )}
                   </li>
                 </ul>
               </div>
@@ -582,8 +656,12 @@ const Immigration = () => {
                           type="radio"
                           name="financialCapacity"
                           value="Less than 10k CAD"
-                          onChange={handleExpense}
-                          className="master"
+                          onChange={handleChange}
+                          className={
+                            errors.financialCapacity
+                              ? "input-text-error"
+                              : "error"
+                          }
                         />
                         <label for="Less than 10k CAD">Less than 10k CAD</label>
                       </li>
@@ -593,7 +671,12 @@ const Immigration = () => {
                           type="radio"
                           name="financialCapacity"
                           value="10-20k CAD"
-                          onChange={handleExpense}
+                          onChange={handleChange}
+                          className={
+                            errors.financialCapacity
+                              ? "input-text-error"
+                              : "error"
+                          }
                         />
                         <label for="10-20k CAD">10-20k CAD</label>
                       </li>
@@ -603,20 +686,23 @@ const Immigration = () => {
                           type="radio"
                           name="financialCapacity"
                           value="20k plus CAD"
-                          onChange={handleExpense}
+                          onChange={handleChange}
+                          className={
+                            errors.financialCapacity
+                              ? "input-text-error"
+                              : "error"
+                          }
                         />
                         <label for="20k plus CAD">20k plus CAD</label>
                       </li>
                     </ul>
                   </li>
+                  {errors.financialCapacity && (
+                    <div className="error-text">{errors.financialCapacity}</div>
+                  )}
                 </ul>
               </div>
-              <button
-                id="submit"
-                className="final-button"
-                type="submit"
-                onClick={handleResponse}
-              >
+              <button id="submit" className="final-button" type="submit">
                 Submit
               </button>
             </form>
