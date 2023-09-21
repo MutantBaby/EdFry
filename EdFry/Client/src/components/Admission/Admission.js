@@ -1,73 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./admission.css";
 import Navbar2 from "../Navbar2/Navbar2";
-import SweetAlertService from "../../services/SweetAlert";
+import SweetAlertService from "services/SweetAlert";
 const Admission = () => {
-  const items = ["One", "Two", "Three"];
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState([]);
-  const [qualification, setQualification] = useState("");
-  const [interestedEducation, setInterestedEducation] = useState("");
-  const [timeSlot, setTimeSlot] = useState("");
-  const [country, setCountry] = useState("");
-  const [budget, setBudget] = useState("");
-  const [program, setProgram] = useState("");
-  const handleTime = (event) => {
-    setTimeSlot(event.target.value);
-  };
-  const handleState = (event) => {
-    setCountry(event.target.value);
-  };
-  const handleQualification = (event) => {
-    setQualification(event.target.value);
-  };
-  const handleLevel = (event) => {
-    setInterestedEducation(event.target.value);
-  };
-  const handleBudget = (event) => {
-    setBudget(event.target.value);
-  };
-  const handleInterests = (event) => {
-    setProgram(event.target.value);
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    qualification: "",
+    interestedEducation: "",
+    timeSlot: "",
+    country: "",
+    budget: "",
+    program: "",
+  });
+  const [errors, setErrors] = useState({});
+  useEffect(() => {
+    setErrors({});
+  }, []);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:5000/api/admission", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Headers": "Content-Type",
-          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
-        body: JSON.stringify({
-          name,
-          contact,
-          qualification,
-          interestedEducation,
-          timeSlot,
-          country,
-          budget,
-          program,
-        }),
-      });
-      console.log("DATA", response);
-      if (response.ok) {
-        console.log("User registered successfully", response);
-      } else {
-        console.error("Error registering user");
+    const validationErrors = {};
+    for (const field in formData) {
+      if (!formData[field]) {
+        validationErrors[field] = `${
+          field.charAt(0).toUpperCase() + field.slice(1)
+        } is required.`;
       }
-    } catch (error) {
-      console.error("Error:", error);
+    }
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      try {
+        const response = await fetch(
+          "https://edfry-backend.vercel.app/api/admission",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              formData,
+            }),
+          }
+        );
+        console.log("RESPO", response);
+        if (response.ok) {
+          console.log("User registered successfully");
+          SweetAlertService.success("Congrats","Your Response has been submitted")
+        } else {
+          console.error("Error registering user");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+      console.log("Form data submitted:");
     }
   };
-  const handleResponse = () => {
-    SweetAlertService.success(
-      "Congrats",
-      "Your Response has been submitted successfully"
-    );
-  };
-  console.log("CONTTTTTTTTTTTTTTTTTTTT", country);
   return (
     <>
       <Navbar2 />
@@ -97,7 +99,8 @@ const Admission = () => {
                         type="checkbox"
                         name="country"
                         value="usa"
-                        onChange={handleState}
+                        onChange={handleChange}
+                        className={errors.martialStatus ? "error" : "master"}
                       />
                       <label for="usa">USA</label>
                     </li>
@@ -107,7 +110,8 @@ const Admission = () => {
                         type="checkbox"
                         name="country"
                         value="uk"
-                        onChange={handleState}
+                        onChange={handleChange}
+                        className={errors.martialStatus ? "error" : "master"}
                       />
                       <label for="uk">UK</label>
                     </li>
@@ -117,7 +121,8 @@ const Admission = () => {
                         type="checkbox"
                         name="country"
                         value="europe"
-                        onChange={handleState}
+                        onChange={handleChange}
+                        className={errors.country ? "error" : "master"}
                       />
                       <label for="europe">Europe</label>
                     </li>
@@ -127,7 +132,8 @@ const Admission = () => {
                         type="checkbox"
                         name="country"
                         value="austrailia"
-                        onChange={handleState}
+                        onChange={handleChange}
+                        className={errors.country ? "error" : "master"}
                       />
                       <label for="austrailia">Australia</label>
                     </li>
@@ -137,7 +143,8 @@ const Admission = () => {
                         type="checkbox"
                         name="country"
                         value="canada"
-                        onChange={handleState}
+                        onChange={handleChange}
+                        className={errors.country ? "error" : "master"}
                       />
                       <label for="canada">Canada</label>
                     </li>
@@ -147,11 +154,15 @@ const Admission = () => {
                         type="checkbox"
                         name="country"
                         value="other"
-                        onChange={handleState}
+                        onChange={handleChange}
+                        className={errors.country ? "error" : "master"}
                       />
                       <label for="other">Other:</label>
                     </li>
                   </ul>
+                  {errors.country && (
+                    <div className="error-text">{errors.country}</div>
+                  )}
                 </div>
               </div>
               <div className="separator">
@@ -165,8 +176,10 @@ const Admission = () => {
                       type="radio"
                       name="interestedEducation"
                       value="bachelors"
-                      onChange={handleLevel}
-                      className="master"
+                      onChange={handleChange}
+                      className={
+                        errors.interestedEducation ? "error" : "master"
+                      }
                     />
                     <label for="bachelors">Bachelors</label>
                   </li>
@@ -176,7 +189,10 @@ const Admission = () => {
                       type="radio"
                       name="interestedEducation"
                       value="masters"
-                      onChange={handleLevel}
+                      onChange={handleChange}
+                      className={
+                        errors.interestedEducation ? "error" : "master"
+                      }
                     />
                     <label for="masters">Masters</label>
                   </li>
@@ -186,11 +202,17 @@ const Admission = () => {
                       type="radio"
                       name="interestedEducation"
                       value="phd"
-                      onChange={handleLevel}
+                      onChange={handleChange}
+                      className={
+                        errors.interestedEducation ? "error" : "master"
+                      }
                     />
                     <label for="phd">PhD</label>
                   </li>
                 </ul>
+                {errors.interestedEducation && (
+                  <div className="error-text">{errors.interestedEducation}</div>
+                )}
               </div>
               <div className="separator">
                 <label for="qualification" className="label-main">
@@ -203,8 +225,10 @@ const Admission = () => {
                       type="radio"
                       name="qualification"
                       value="inter"
-                      onChange={handleQualification}
-                      className="master"
+                      onChange={handleChange}
+                      className={
+                        errors.interestedEducation ? "error" : "master"
+                      }
                     />
                     <label for="inter">Inter</label>
                   </li>
@@ -214,7 +238,8 @@ const Admission = () => {
                       type="radio"
                       name="qualification"
                       value="BS"
-                      onChange={handleQualification}
+                      onChange={handleChange}
+                      className={errors.qualification ? "error" : "master"}
                     />
                     <label for="BS">Bachelors</label>
                   </li>
@@ -224,6 +249,8 @@ const Admission = () => {
                       type="radio"
                       name="qualification"
                       value="MS"
+                      onChange={handleChange}
+                      className={errors.qualification ? "error" : "master"}
                     />
                     <label for="MS">Masters</label>
                   </li>
@@ -233,11 +260,15 @@ const Admission = () => {
                       type="radio"
                       name="qualification"
                       value="other"
-                      onChange={handleQualification}
+                      onChange={handleChange}
+                      className={errors.qualification ? "error" : "master"}
                     />
                     <label for="other">Other</label>
                   </li>
                 </ul>
+                {errors.qualification && (
+                  <div className="error-text">{errors.qualification}</div>
+                )}
               </div>
               <div className="separator">
                 <label for="budget" className="label-main">
@@ -254,8 +285,8 @@ const Admission = () => {
                       type="radio"
                       name="budget"
                       value="$12000-$15000"
-                      onChange={handleBudget}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.budget ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="$12000-$15000">
                       {" "}
@@ -268,8 +299,8 @@ const Admission = () => {
                       type="radio"
                       name="budget"
                       value="$16000-$20000"
-                      onChange={handleBudget}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.budget ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="$16000-$20000">
                       {" "}
@@ -282,8 +313,8 @@ const Admission = () => {
                       type="radio"
                       name="budget"
                       value="$21000-$24000"
-                      onChange={handleBudget}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.budget ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="$21000-$24000">
                       {" "}
@@ -296,8 +327,8 @@ const Admission = () => {
                       type="radio"
                       name="budget"
                       value="$25000-$30000"
-                      onChange={handleBudget}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.budget ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="$25000-$30000">
                       {" "}
@@ -310,8 +341,8 @@ const Admission = () => {
                       type="radio"
                       name="budget"
                       value="$31000-$35000"
-                      onChange={handleBudget}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.budget ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="$31000-$35000">
                       {" "}
@@ -324,8 +355,8 @@ const Admission = () => {
                       type="radio"
                       name="budget"
                       value="$36000-$40000"
-                      onChange={handleBudget}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.budget ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="$36000-$40000">
                       {" "}
@@ -333,6 +364,9 @@ const Admission = () => {
                     </label>
                   </li>
                 </ul>
+                {errors.budget && (
+                  <div className="error-text">{errors.budget}</div>
+                )}
               </div>
               <div className="separator">
                 <label for="timeSlot" className="label-main">
@@ -349,8 +383,8 @@ const Admission = () => {
                       type="radio"
                       name="timeSlot"
                       value="3:00-4:00pm"
-                      onChange={handleTime}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.timeSlot ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="3:00-4:00pm">
                       {" "}
@@ -363,8 +397,8 @@ const Admission = () => {
                       type="radio"
                       name="timeSlot"
                       value="4:00-5:00pm"
-                      onChange={handleTime}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.timeSlot ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="4:00-5:00pm">
                       {" "}
@@ -377,8 +411,8 @@ const Admission = () => {
                       type="radio"
                       name="timeSlot"
                       value="5:00-6:00pm"
-                      onChange={handleTime}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.timeSlot ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="5:00-6:00pm">
                       {" "}
@@ -391,8 +425,8 @@ const Admission = () => {
                       type="radio"
                       name="timeSlot"
                       value="6:00-7:00pm"
-                      onChange={handleTime}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.timeSlot ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="6:00-7:00pm">
                       {" "}
@@ -405,8 +439,8 @@ const Admission = () => {
                       type="radio"
                       name="timeSlot"
                       value="7:00-8:00pm"
-                      onChange={handleTime}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.timeSlot ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="7:00-8:00pm">
                       {" "}
@@ -419,8 +453,8 @@ const Admission = () => {
                       type="radio"
                       name="timeSlot"
                       value="8:00-9:00pm"
-                      onChange={handleTime}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.timeSlot ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="8:00-9:00pm">
                       {" "}
@@ -433,8 +467,8 @@ const Admission = () => {
                       type="radio"
                       name="timeSlot"
                       value="other"
-                      onChange={handleTime}
-                      className="master"
+                      onChange={handleChange}
+                      className={errors.timeSlot ? "error" : "master"}
                     />
                     <label style={{ marginLeft: "-23px" }} for="other">
                       {" "}
@@ -442,6 +476,9 @@ const Admission = () => {
                     </label>
                   </li>
                 </ul>
+                {errors.timeSlot && (
+                  <div className="error-text">{errors.timeSlot}</div>
+                )}
               </div>
               <div class="separator">
                 <label for="interests" class="label-main">
@@ -461,9 +498,10 @@ const Admission = () => {
                     <input
                       id="business"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="business"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label for="business" style={{ marginLeft: "-23px" }}>
                       Business
@@ -473,9 +511,10 @@ const Admission = () => {
                     <input
                       id="Computer Science"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="Computer Science"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label
                       for="Computer Science"
@@ -488,9 +527,10 @@ const Admission = () => {
                     <input
                       id="Engineering"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="Engineering"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label for="Engineering" style={{ marginLeft: "-23px" }}>
                       Engineering
@@ -500,9 +540,10 @@ const Admission = () => {
                     <input
                       id="Education"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="Education"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label for="Education" style={{ marginLeft: "-23px" }}>
                       Education
@@ -512,9 +553,10 @@ const Admission = () => {
                     <input
                       id="Biomedical Sciences"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="Biomedical Sciences"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label
                       for="Biomedical Sciences"
@@ -527,9 +569,10 @@ const Admission = () => {
                     <input
                       id="Political Science"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="Political Science"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label
                       for="Political Science"
@@ -542,9 +585,10 @@ const Admission = () => {
                     <input
                       id="Social Sciences"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="Social Sciences"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label
                       for="Social Sciences"
@@ -557,9 +601,10 @@ const Admission = () => {
                     <input
                       id="Communication"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="Communication"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label for="Communication" style={{ marginLeft: "-23px" }}>
                       Communication
@@ -569,15 +614,19 @@ const Admission = () => {
                     <input
                       id="Other"
                       type="checkbox"
-                      name="interests"
+                      name="program"
                       value="Other"
-                      onChange={handleInterests}
+                      onChange={handleChange}
+                      className={errors.program ? "error" : "master"}
                     />
                     <label for="Other" style={{ marginLeft: "-23px" }}>
                       Other
                     </label>
                   </li>
                 </ul>
+                {errors.program && (
+                  <div className="error-text">{errors.program}</div>
+                )}
               </div>
               <div>
                 <ul className="ul">
@@ -590,16 +639,19 @@ const Admission = () => {
                       Name
                     </label>
                     <input
-                      autofocus
-                      id="experience"
-                      className="input-text"
+                      id="name"
                       type="text"
-                      name="experience"
-                      placeholder="Your Answer"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      required
+                      name="name"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={
+                        errors.name ? "input-text-error" : "input-text"
+                      }
                     />
+                    {errors.name && (
+                      <div className="error-text">{errors.name}</div>
+                    )}
                   </li>
                   <li className="li">
                     <label
@@ -610,25 +662,24 @@ const Admission = () => {
                       Contact Number
                     </label>
                     <input
-                      id="number"
-                      className="input-text"
+                      id="contact"
                       type="text"
-                      name="score"
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
-                      placeholder="Your Answer"
-                      required
+                      name="contact"
+                      value={formData.contact}
+                      onChange={handleChange}
+                      className={
+                        errors.contact ? "input-text-error" : "input-text"
+                      }
+                      placeholder="Your Contact"
                     />
+                    {errors.contact && (
+                      <div className="error-text">{errors.contact}</div>
+                    )}
                   </li>
                 </ul>
               </div>
 
-              <button
-                id="submit"
-                className="final-button"
-                type="submit"
-                onClick={handleResponse}
-              >
+              <button id="submit" className="final-button" type="submit">
                 Submit
               </button>
             </form>

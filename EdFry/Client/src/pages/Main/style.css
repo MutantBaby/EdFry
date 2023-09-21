@@ -215,6 +215,7 @@
   font-size: 20px;
   color: #696f8c;
   font-weight: 500;
+  min-width: 350px;
   line-height: 30px;
   font-style: normal;
   margin-bottom: 40px;
@@ -449,7 +450,7 @@
     margin: 2rem 0px;
     align-items: center;
     justify-content: center;
-    background-color: green;
+    /* background-color: green; */
   }
 
   .mainPage--portion {
@@ -466,6 +467,7 @@
 
   .section1_portion2 {
     margin-left: 1rem;
+    align-self: center;
     align-items: flex-start;
   }
 
@@ -824,17 +826,22 @@
     flex-direction: column;
   }
 }
+
 @media only screen and (max-width: 425px) {
   /*Small smartphones [325px -> 425px]*/
+
+  .h1_padding {
+    padding: 0px 10px !important;
+  }
 
   .mainPage--section {
     display: flex !important;
     flex-wrap: wrap !important;
-    margin: 2rem 0rem !important;
+    margin: 0rem 0rem !important;
     align-items: stretch !important;
     flex-direction: column !important;
     justify-content: center !important;
-    background-color: red;
+    /* background-color: red; */
   }
 
   .mainPage--portion {
@@ -843,11 +850,11 @@
 
   .section1_portion1 {
     align-items: flex-start !important;
-    align-self: flex-start !important;
+    align-self: center !important;
   }
 
   .section1_portion1 h1 {
-    font-size: 44px;
+    font-size: 40px;
     color: #001e5c;
     font-weight: 700;
     line-height: 50px !important;
@@ -927,6 +934,7 @@
   }
 
   .section2_portion2_img {
+    width: 325px;
     border-radius: 16px;
     justify-content: center;
     padding: 0px 10px 17px 10px;
@@ -975,6 +983,7 @@
   }
 
   .updated {
+    padding: 10px !important;
     flex-direction: column !important;
   }
 
@@ -996,7 +1005,7 @@
     display: flex !important;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 300px;
+    width: 380px;
     margin-top: 150px !important;
   }
 
@@ -1037,8 +1046,8 @@
   }
 
   .inner_portion5 {
-    bottom: 50px;
     left: 50%;
+    bottom: 15%;
     display: flex;
     position: absolute;
     align-items: center;
@@ -1048,9 +1057,9 @@
 
   .inner_portion5 h1 {
     color: white;
-    font-size: 40px;
+    font-size: 25px;
     font-weight: 500;
-    line-height: 56px;
+    line-height: 36px;
     font-style: normal;
     text-align: center;
     letter-spacing: -1px;
@@ -1063,7 +1072,7 @@
     outline: none;
     cursor: pointer;
     font-size: 20px;
-    margin-top: 35px;
+    margin-top: 20px;
     color: #0050f5;
     font-weight: 700;
     line-height: 32px;
@@ -1161,7 +1170,6 @@
   }
 }
 
-
 /* Write your CSS here */
 .app-container {
   /* display: flex;
@@ -1189,7 +1197,7 @@
 }
 
 .heading {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 32px;
 }
 
