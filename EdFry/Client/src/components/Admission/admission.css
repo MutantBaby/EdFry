@@ -6,6 +6,13 @@
   height: 100vh;
   display: grid;  
 }
+.error {
+  border: 1px solid red;
+}
+
+.error-text {
+  color: red;
+}
 
 .content {
   background-color: #fff;
@@ -82,7 +89,15 @@
 
 
 /* ===== Input Text ===== */
-
+.input-text-error {
+  font-family: 'Roboto', sans-serif;
+  width: 350px;
+  background-color: #f0f0f7;
+  border: solid 1px #d5d7ed;
+  border-radius: 3px;
+  padding: 10px;
+  border: 1px solid red;
+}
 .input-text {
   font-family: 'Roboto', sans-serif;
   width: 350px;
