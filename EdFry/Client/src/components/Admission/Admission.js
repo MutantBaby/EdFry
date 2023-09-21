@@ -100,7 +100,7 @@ const Admission = () => {
                         name="country"
                         value="usa"
                         onChange={handleChange}
-                        className={errors.martialStatus ? "error" : "master"}
+                        className={errors.country ? "error" : "master"}
                       />
                       <label for="usa">USA</label>
                     </li>
@@ -111,7 +111,7 @@ const Admission = () => {
                         name="country"
                         value="uk"
                         onChange={handleChange}
-                        className={errors.martialStatus ? "error" : "master"}
+                        className={errors.country ? "error" : "master"}
                       />
                       <label for="uk">UK</label>
                     </li>
@@ -227,7 +227,7 @@ const Admission = () => {
                       value="inter"
                       onChange={handleChange}
                       className={
-                        errors.interestedEducation ? "error" : "master"
+                        errors.qualification ? "error" : "master"
                       }
                     />
                     <label for="inter">Inter</label>
