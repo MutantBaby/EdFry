@@ -8,9 +8,9 @@ const Admission = () => {
     contact: "",
     qualification: "",
     interestedEducation: "",
+    budget: "",
     timeSlot: "",
     country: "",
-    budget: "",
     program: "",
   });
   const [errors, setErrors] = useState({});

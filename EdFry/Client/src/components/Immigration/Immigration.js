@@ -65,6 +65,7 @@ const Immigration = () => {
         console.log("RESPO", response);
         if (response.ok) {
           console.log("User registered successfully");
+          SweetAlertService.success("Congrats","Your Response has been submitted")
         } else {
           console.error("Error registering user");
         }
@@ -74,99 +75,9 @@ const Immigration = () => {
       console.log("Form data submitted:");
     }
   };
-  const handleResponse = () => {};
   return (
     <>
-      {/* <div classNameName="form-container">
-      <h2>Application Form</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-
-        <label>Contact:</label>
-        <input
-          type="text"
-          value={contact}
-          onChange={(e) => setContact(e.target.value)}
-          required
-        />
-
-        <label>Age:</label>
-        <input
-          type="text"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-          required
-        />
-
-        <label>Highest Qualification:</label>
-        <div classNameName="radio-group">
-          <input type="radio" id="html" name="fav_language" value="HTML" /> {" "}
-          <label for="html">Bachelors</label>
-          <input type="radio" id="css" name="fav_language" value="CSS" /> {" "}
-          <label for="css">Masters</label>
-          <input
-            type="radio"
-            id="javascript"
-            name="fav_language"
-            value="JavaScript"
-          />
-          <label for="javascript">PhD</label>
-          <input
-            type="radio"
-            id="javascript"
-            name="fav_language"
-            value="JavaScript"
-          />
-          <label for="javascript">Intermediate/A-levels</label>
-          <input
-            type="radio"
-            id="javascript"
-            name="fav_language"
-            value="JavaScript"
-          />
-          <label for="javascript">Diploma</label>
-        </div>
-
-        <label>How many years of experience do you have?</label>
-        <input
-          type="text"
-          value={experience}
-          onChange={(e) => setExperience(e.target.value)}
-          required
-        />
-
-        <label>Have you taken the General IELTS?</label>
-        <div classNameName="radio-group">
-          <label for="css">Masters</label>
-          <input
-            type="radio"
-            id="javascript"
-            name="fav_language"
-            value="JavaScript"
-          />
-          <label for="javascript">PhD</label>
-          <input
-            type="radio"
-            id="javascript"
-            name="fav_language"
-            value="JavaScript"
-          />
-        </div>
-
-        <label>What is your IELTS score?</label>
-        <input type="text" onChange={(e) => setIeltsScore(e.target.value)} />
-
-        <button type="submit">Submit</button>
-      </form>
-    </div> */}
-
-      <Navbar2 />
+    <Navbar2 />
       <div className="contain">
         <div className="content">
           <header className="header">
