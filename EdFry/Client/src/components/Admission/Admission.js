@@ -18,13 +18,28 @@ const Admission = () => {
     setErrors({});
   }, []);
 
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  //   if (errors[name]) {
+  //     setErrors({
+  //       ...errors,
+  //       [name]: "",
+  //     });
+  //   }
+  // };
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(`Updating ${name} with value: ${value}`);
     setFormData({
       ...formData,
       [name]: value,
     });
     if (errors[name]) {
+      console.log(`Clearing error for ${name}`);
       setErrors({
         ...errors,
         [name]: "",
@@ -52,9 +67,8 @@ const Admission = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              formData,
-            }),
+            body: JSON.stringify(formData), // Send formData directly
+           
           }
         );
         console.log("RESPO", response);
@@ -639,7 +653,6 @@ const Admission = () => {
                       Name
                     </label>
                     <input
-                      id="name"
                       type="text"
                       name="name"
                       placeholder="Your Name"
@@ -662,7 +675,6 @@ const Admission = () => {
                       Contact Number
                     </label>
                     <input
-                      id="contact"
                       type="text"
                       name="contact"
                       value={formData.contact}

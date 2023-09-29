@@ -36,7 +36,7 @@ const Immigration = () => {
       });
     }
   };
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = {};
     for (const field in formData) {
@@ -65,7 +65,10 @@ const Immigration = () => {
         console.log("RESPO", response);
         if (response.ok) {
           console.log("User registered successfully");
-          SweetAlertService.success("Congrats","Your Response has been submitted")
+          SweetAlertService.success(
+            "Congrats",
+            "Your Response has been submitted"
+          );
         } else {
           console.error("Error registering user");
         }
@@ -77,7 +80,7 @@ const Immigration = () => {
   };
   return (
     <>
-    <Navbar2 />
+      <Navbar2 />
       <div className="contain">
         <div className="content">
           <header className="header">
@@ -85,19 +88,21 @@ const Immigration = () => {
               Immigration Form
             </h1>
             <p id="description" className="descriptions">
-              You answers to this form will help our team assess whether you
+              Welcome to EdFry affiliated with Registered and Licensed firm,
               <br />
-              qualify for a free 15 min consultation. Averou Immigration
+              Averou Immigration – Your Pathway to Canadian Immigration Success!
               <br />
-              Services is a registered Canadian Immigration firm and authorized
+              Before you embark on your journey, let's ensure you're on the
               <br />
-              by the Government of Canada to provider immigration advice and
+              right track. Our team of expert lawyers and consultants is here to
               <br />
-              services. The principle consultant at the firm is Mr. Amir Ala
+              guide you. Please take a moment to fill out our pre-assessment
               <br />
-              Moyaeri RCIC#: R532525 Averou Immigration Services 9131 Keele St.
+              form. It's the first step towards You answers to this form will
               <br />
-              Suite A4 Vaughn, ON LK4 0G7 pakistan@averou.ca
+              help our team assess whether you
+              <br />
+             
             </p>
           </header>
           <hr />
@@ -273,7 +278,9 @@ const Immigration = () => {
                       value={formData.familyUnitSize}
                       onChange={handleChange}
                       className={
-                        errors.familyUnitSize ? "input-text-error" : "input-text"
+                        errors.familyUnitSize
+                          ? "input-text-error"
+                          : "input-text"
                       }
                     />
                     {errors.familyUnitSize && (

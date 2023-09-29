@@ -1,0 +1,107 @@
+.mainSignup {
+    width: 100vw;
+    height: 87vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .divider{
+    width:20px;
+    height:auto;
+    display:inline-block;
+  }
+  .inner-main1 {
+     display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .button-Signup {
+    width: 177px;
+    border: 1px solid white;
+    background: #ffffff;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #8d95b2;
+    font-size: 16px;
+    /* font-family: 'Inter'; */
+    font-weight: bold;
+    line-height: 24px;
+    word-wrap: break-word;
+    white-space: nowrap;
+  }
+  
+  .signup-options button {
+    background-color: #eee;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  .inner-page2 {
+    margin-top: 42px;
+    width: 580px;
+    height: 497px;
+    border-radius: 8px;
+    border: 0.5px #e5eeff solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .emailClass {
+
+
+    /* width: 348px; */
+    height: 40px;
+    /* flex-shrink: 0; */
+    border-radius: 8px;
+    background: #ebf0ff;
+    font-size: 16px;
+    font-style: normal;
+    /* font-weight: 400; */
+    /* line-height: 24px; */
+    /* margin-top: 13px; */
+    border: 1px solid white;
+}
+  .signup-options button.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .signup-form {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  input{
+    text-indent: 10px;
+  }
