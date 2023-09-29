@@ -16,7 +16,7 @@ import { img2_frame } from "../../assets/svgs/img2_frame";
 import { sec2_frame1 } from "../../assets/svgs/sec2_frame1";
 import { sec2_frame2 } from "../../assets/svgs/sec2_frame2";
 import { sec2_frame3 } from "../../assets/svgs/sec2_frame3";
-
+import coo from "../../assets/svgs/COO_209x406.jpg";
 import {
   Sec6ClockBox,
   Sec7AvatarBox,
@@ -49,10 +49,17 @@ const MainPage = () => {
         <div className="mainPage--portion section1_portion2">
           <div className="inner_portion2">
             <ImageContainer
-              img={img1}
+              img={coo}
               clsStr1={"p1_Img"}
-              img_frame={img1_frame}
+              style={{height: "400px",
+                    width: "216px",
+                    borderRadius: "60px"}}
             />
+            {/* <div className="overlay-text">
+              <span className="tutor-font">Qasim Shamim</span> 
+              <p style={{fontSize:"14px"}}>Counseller</p>
+            </div>
+            <div style={{marginTop : "10px"}}></div> */}
             <ImageContainer
               img={img2}
               clsStr1={"p2_Img"}

@@ -2,6 +2,7 @@ import "./Navbar.css";
 import img from "../../assets/Group 5085.jpg";
 import { logo } from "../../assets/svgs/logo";
 import { Link } from "react-router-dom";
+import { Logo } from "components/Navbar2/Logo";
 const Navbar = () => {
   return (
     <>
@@ -29,7 +30,9 @@ const Navbar = () => {
       </nav> */}
       <div className="navbar">
         <a href="#" className="logo">
-          {logo}
+        <div className="logoxs">
+          <Logo />
+        </div>
         </a>
         <button className="login-button">
           <Link to={"/"} style={{ color: "white", textDecoration: "none" }}>

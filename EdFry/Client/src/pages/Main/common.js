@@ -10,7 +10,7 @@ import sec4_huawei from "../../assets/svgs/sec4_huawei.jpg";
 
 import { sec6_clock } from "../../assets/svgs/sec6_clock";
 
-export const ImageContainer = ({ img, img_frame, clsStr1 }) => {
+export const ImageContainer = ({ img, img_frame, clsStr1 , style }) => {
   return (
     <div className={`${clsStr1}`}>
       <div className={`portion2_img`}>

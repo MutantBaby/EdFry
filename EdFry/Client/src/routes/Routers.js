@@ -24,6 +24,7 @@ import { AuthContextProvider } from "../context/AuthContext";
 import Navbar2 from "../components/Navbar2/Navbar2";
 import Protected from "../context/Protected";
 import SurveyForm from "../SurveyForm";
+import Sign from "components/Signup/Sign";
 
 
 const Routers = () => {
@@ -37,6 +38,7 @@ const Routers = () => {
           <Route path="/" element={<Home />} />
            {/* <Route path="/otp" element={<Verification />} /> */}
           {/* <Route path="/home" element={<Home />} /> */}
+          <Route path="/sign" element={<Signup />} />
           <Route path="/immigration" element={<Immigration />} />
           <Route path="/admission" element={<Admission />} />
         </Routes>
