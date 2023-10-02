@@ -7,6 +7,7 @@ import { google } from "../../assets/svgs/google";
 import { apple } from "../../assets/svgs/apple";
 import { facebook } from "../../assets/svgs/facebook";
 import Navbar2 from "../Navbar2/Navbar2";
+import SweetAlertService from "services/SweetAlert";
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
@@ -31,16 +32,8 @@ const Login = () => {
 
       if (response.ok) {
         // Successfully logged in, you can handle redirection or other actions here
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Welcome" + formData.name,
-          showConfirmButton: false,
-          timer: 2500,
-          timerProgressBar: true,
-        }).then(function () {
-          window.location = "/home";
-        });
+      SweetAlertService.success("Great Job" , "You are in Redireting")
+      
         setUserName(formData.name)
         setIsLoggedIn(true);
         console.log('Login successful',isLoggedIn);
@@ -95,7 +88,7 @@ const Login = () => {
   };
   return (
     <>
-      <Navbar2 isLoggedIn={isLoggedIn} userName={userName} handleLogout={handleLogout}/>
+      <Navbar />
       <p className="textClass">Login</p>
       <div className="mainSignup">
         <div className="containerz">
@@ -103,18 +96,7 @@ const Login = () => {
           <div className="inner-page2">
             <div className="Inner_main2">
               <form onSubmit={handleLogin}>
-              <label for="name" className="everyLabel">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                  className="emailClass"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
+             
                
                 <label for="email" className="everyLabel">
                   Email
@@ -128,7 +110,18 @@ const Login = () => {
                   value={formData.email}
                   onChange={handleChange}
                 />
-               
+                <label for="password" className="everyLabel">
+                  Password
+                </label>
+                <input
+                  type="text"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  className="emailClass"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
                 <button
                   type="submit"
                   className="button-Sign"

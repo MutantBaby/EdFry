@@ -25,25 +25,43 @@ import Navbar2 from "../components/Navbar2/Navbar2";
 import Protected from "../context/Protected";
 import SurveyForm from "../SurveyForm";
 import Sign from "components/Signup/Sign";
-
+import ErrorPage from "components/404/ErrorPage";
+import Logout from "components/Logout/Logout";
+import TeacherHome from "components/User/Home/UserHome";
+import UserHome from "components/User/Home/UserHome";
 
 const Routers = () => {
+  const isAuthenticated = !!localStorage.getItem("token");
+  const userType = localStorage.getItem("userType");
   return (
     <>
-
-
-      
       <Routes>
-          {/* <Route path="/nav" element={<Navbar />} /> */}
-          <Route path="/" element={<Home />} />
-           {/* <Route path="/otp" element={<Verification />} /> */}
-          {/* <Route path="/home" element={<Home />} /> */}
-          <Route path="/sign" element={<Signup />} />
-          <Route path="/immigration" element={<Immigration />} />
-          <Route path="/admission" element={<Admission />} />
-        </Routes>
-     
+        {/* {!isAuthenticated && ( 
+          <>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={<Login />} />
+           
+          </>
+       )} 
+       {isAuthenticated && ( 
+          <>
+           <Route path="/verify" element={<Verification />} />
+            {userType == "user" ? (
+              <Route path="/user" element={<UserHome />} />
+            ) : (
+              <Route path="/teacher" element={<UserHome />} />
+            )}
+          </>
+        )} */}
+
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/immigration" element={<Immigration />} />
+        <Route path="/admission" element={<Admission />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
     </>
   );
 };
+
 export default Routers;

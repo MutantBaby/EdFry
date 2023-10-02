@@ -1,3 +1,4 @@
+@import "~font-awesome/css/font-awesome.min.css";
 /* .navbar {
   display: flex;
   justify-content: center;
@@ -204,6 +205,8 @@
   list-style-type: none;
   top: 10px;
   position: absolute;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-elements ul li:not(:last-child) {
@@ -271,4 +274,37 @@
     margin-right: unset;
     margin-top: 22px;
   }
+}
+
+
+
+.nav-elements li {
+  padding: 10px;
+  position: relative;
+}
+
+.nav-elements a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-elements a:hover {
+  color: #00bcd4;
+}
+
+.active-link::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background-color: #00bcd4;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transition: width 0.3s;
+}
+
+.active-link:hover::after {
+  width: 100%;
 }

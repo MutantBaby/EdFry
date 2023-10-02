@@ -84,15 +84,13 @@ import { Logo } from "./Logo";
 // };
 // export default Navbar2;
 
-
-
 const Navbar2 = () => {
   const [showNavbar, setShowNavbar] = useState(false);
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };
-
+  const token = localStorage.getItem("token");
   return (
     <nav className="navbarxs">
       <div className="containerxs">
@@ -105,24 +103,29 @@ const Navbar2 = () => {
         <div className={`nav-elements  ${showNavbar && "active"}`}>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/home" activeClassName="active-link">
+                <i className="fa fa-home"></i> Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/immigration">Immigration</NavLink>
+              <NavLink to="/immigration" activeClassName="active-link">
+                <i className="fa fa-plane"></i> Immigration
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/admission">Admission</NavLink>
+              <NavLink to="/admission" activeClassName="active-link">
+                <i className="fa fa-graduation-cap"></i> Admission
+              </NavLink>
             </li>
-            
+           
           </ul>
           
         </div>
-        
       </div>
     </nav>
   );
 };
-export default Navbar2
+export default Navbar2;
 // const Home = () => <h2>You are in the Home</h2>;
 // const Blogs = () => <h2>You are in the Blogs</h2>;
 // const Projects = () => <h2>You are in the Projects</h2>;
@@ -143,6 +146,3 @@ export default Navbar2
 //     </>
 //   );
 // };
-
-
-
