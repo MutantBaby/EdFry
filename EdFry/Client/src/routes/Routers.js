@@ -55,7 +55,7 @@ const Routers = () => {
         )} */}
 
         <Route path="/logout" element={<Logout />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/immigration" element={<Immigration />} />
         <Route path="/admission" element={<Admission />} />
         {/* <Route path="*" element={<ErrorPage />} /> */}
