@@ -3,9 +3,9 @@ import "./style.css";
 import img1 from "../../assets/svgs/img1.jpg";
 import img2 from "../../assets/svgs/img2.png";
 import original from "../../assets/svgs/original.png";
-import sec7_p1 from "../../assets/svgs/sec7_p1.jpg";
-import sec7_p2 from "../../assets/svgs/sec7_p2.jpg";
-import sec7_p3 from "../../assets/svgs/sec7_p3.jpg";
+import sec7_p1 from "../../assets/svgs/p1.jpg";
+import sec7_p2 from "../../assets/svgs/p2.jpg";
+import sec7_p3 from "../../assets/svgs/p3.jpg";
 import groupImg from "../../assets/svgs/groupImg.jpg";
 import yahya from "../../assets/svgs/yahya.jpg";
 import minahil from "../../assets/svgs/minahil.jpg";
@@ -51,9 +51,7 @@ const MainPage = () => {
             <ImageContainer
               img={coo}
               clsStr1={"p1_Img"}
-              style={{height: "400px",
-                    width: "216px",
-                    borderRadius: "60px"}}
+              style={{ height: "400px", width: "216px", borderRadius: "60px" }}
             />
             {/* <div className="overlay-text">
               <span className="tutor-font">Qasim Shamim</span> 
@@ -151,15 +149,35 @@ const MainPage = () => {
 
           <div className="section6_container">
             <div className="sec6_con1">
-              <Sec6ClockBox title={"On-demand mentoring"} bg={"#F0F5FF"} />
-              <Sec6ClockBox title={"Study in Groups"} bg={"#F2FCFD"} />
+              <Sec6ClockBox
+                title={"On-demand mentoring"}
+                bg={"#F0F5FF"}
+                data={`Explore Study Abroad Options
+                      Get college counseling from the best of mentors and apply to your dream to universities and prestigious scholarships
+`}
+              />
+              <Sec6ClockBox
+                title={"Study in Groups"}
+                bg={"#F2FCFD"}
+                data={` Learn from Best Mentors
+                  Our qualified team of distinguished counselors has years of expertise in helping young professionals and students like you. Start your journey with EdFry today
+`}
+              />
             </div>
             <div style={{ marginTop: "50px" }} className="sec6_con2">
               <Sec6ClockBox
                 title={"Learn from the best mentors"}
                 bg={"#F4F5FB"}
+                data={`Book a Consultation Session
+                Book a free consultation to explore your study and immigration options
+                `}
               />
-              <Sec6ClockBox title={"Get help in any subject"} bg={"#FFFAF1"} />
+              <Sec6ClockBox
+                title={"Get help in any subject"}
+                bg={"#FFFAF1"}
+                data={`Get help in any academic or career choice
+                Our professional counselors are trained to help students with their academic and professional issues`}
+              />
             </div>
           </div>
         </div>
@@ -176,18 +194,23 @@ const MainPage = () => {
                 name={"Jamil Tariq"}
                 data={"Edfryer since 2019"}
                 title={`Best Platform to Learn and to Discuss Academia`}
+                recordData={`When I first approached EdFry, I had dreams of studying at a prestigious institution like IIT, but the financial aspect seemed like a significant hurdle. However, from the very beginning, their team displayed unwavering confidence in my potential and their ability to help me achieve my goals.`}
               />
               <Sec7AvatarBox
                 avatar={sec7_p2}
                 name={"Jamil Tariq"}
                 data={"Edfryer since 2019"}
                 title={`Best Platform to Learn and to Discuss Academia`}
+                recordData={`EdFRY's expertise in Canadian immigration policies and procedures was evident right from our first consultation. They took the time to understand my background, qualifications, and aspirations, allowing them to provide personalized guidance that was tailored to my unique circumstances.`}
               />
               <Sec7AvatarBox
                 avatar={sec7_p3}
                 name={"Jamil Tariq"}
                 data={"Edfryer since 2019"}
                 title={`Best Platform to Learn and to Discuss Academia`}
+                recordData={`I can't thank EdFry and Qasim Shamim enough for the incredible support and guidance they provided me throughout my journey towards studying abroad. As a high school student dreaming of attending a foreign university. That's when I decided to seek professional help, and I'm so glad I did
+                
+               `}
               />
             </div>
           </div>
