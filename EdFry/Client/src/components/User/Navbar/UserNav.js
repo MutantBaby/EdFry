@@ -57,12 +57,13 @@ const UserNav = () => {
         </ul>
       </div>
       <div className="right">
-        <i className="fa fa-bell"></i>
+        {/* <i className="fa fa-bell"></i>
         <i className="fas fa-sliders-h"></i>
-        <i className="fas fa-user-circle"></i>
+        <i className="fas fa-user-circle"></i> */}
         {/* <FontAwesomeIcon icon={faBell} />
         <FontAwesomeIcon icon={faCog} />
         <FontAwesomeIcon icon={faUser} /> */}
+        
         <div className="profile-dropdown">
           <img src={logos} alt="Profile" />
           <ul className="dropdown-content">

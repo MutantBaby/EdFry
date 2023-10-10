@@ -1,0 +1,14 @@
+export const star = (
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 22 22"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11 17.3774L17.798 21.5L15.994 13.73L22 8.5021L14.091 7.82789L11 0.5L7.909 7.82789L0 8.5021L6.006 13.73L4.202 21.5L11 17.3774Z"
+      fill="#696F8C"
+    />
+  </svg>
+);

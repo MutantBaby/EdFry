@@ -36,23 +36,23 @@ const Routers = () => {
   return (
     <>
       <Routes>
-        {/* {!isAuthenticated && ( 
+        {/* {!isAuthenticated && (  */}
           <>
             <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<Login />} />
            
           </>
-       )} 
-       {isAuthenticated && ( 
+      {/* )} 
+       {isAuthenticated && (  */}
           <>
            <Route path="/verify" element={<Verification />} />
-            {userType == "user" ? (
+            {/* {userType == "user" ? ( */}
               <Route path="/user" element={<UserHome />} />
-            ) : (
+            {/* ) : ( */}
               <Route path="/teacher" element={<UserHome />} />
-            )}
+            {/* )} */}
           </>
-        )} */}
+        {/* )} */}
 
         <Route path="/logout" element={<Logout />} />
         <Route path="/" element={<Home />} />
