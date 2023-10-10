@@ -39,7 +39,7 @@ const Routers = () => {
         {/* {!isAuthenticated && (  */}
           <>
             <Route path="/signup" element={<Signup />} />
-            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
            
           </>
       {/* )} 
