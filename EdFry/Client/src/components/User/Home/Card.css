@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
-
 .containerUser {
   display: flex;
   flex-wrap: wrap;
@@ -16,29 +15,108 @@ img {
     object-fit: cover;
     border-radius: 65px;
 } */
-
+.card__image {
+  width: 100%;
+  height: 100%;
+}
 .cardUser {
-    display: flex;
-    flex-direction: column;
-    /* width: clamp(20rem, calc(20rem + 2vw), 22rem); */
-    overflow: hidden;
-    box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
-    border-radius: 1em;
-    background: #ECE9E6;
-    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-    float: left;
-    width: 362px;
-    padding: 0 19px;
-  
+  display: flex;
+  flex-direction: column;
+  /* width: clamp(20rem, calc(20rem + 2vw), 22rem); */
+  overflow: hidden;
+  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ece9e6;
+  background: linear-gradient(to right, #ffffff, #ece9e6);
+  float: left;
+  width: 362px;
+  /* padding: 0 19px; */
+}
+.card_heading {
+  font-family: "Inter";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
 .row {
-    margin: 0 -5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+  margin: 0 -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
-
+.user_card {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+.card_language {
+  color: #474d66;
+  font-family: "Inter";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+.card_sub_heading {
+  color: #8f95b2;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+.card_school {
+  color: #101840;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.card_education_heading {
+  color: #8f95b2;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+.card_institute {
+  color: #101840;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.advanced_filter {
+  display: inline-flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 16px;
+  background: #ebf0ff;
+  border: 8px solid white;
+}
+.button_filter{
+  justify-content: center;
+}
+.advanced_text {
+  color: #296fff;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+.star_card {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -46,43 +124,39 @@ img {
   clear: both;
 }
 
-
-
-
 .card__body {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
-
 
 .tag {
   align-self: flex-start;
-  padding: .25em .75em;
+  padding: 0.25em 0.75em;
   border-radius: 1em;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .tag + .tag {
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
 
 .tag-blue {
-  background: #56CCF2;
-background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+  background: #56ccf2;
+  background: linear-gradient(to bottom, #2f80ed, #56ccf2);
   color: #fafafa;
 }
 
 .tag-brown {
-  background: #D1913C;
-background: linear-gradient(to bottom, #FFD194, #D1913C);
+  background: #d1913c;
+  background: linear-gradient(to bottom, #ffd194, #d1913c);
   color: #fafafa;
 }
 
 .tag-red {
   background: #cb2d3e;
-background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  background: linear-gradient(to bottom, #ef473a, #cb2d3e);
   color: #fafafa;
 }
 
@@ -99,7 +173,7 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
 
 .user {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .user__image {
@@ -108,4 +182,137 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
 
 .user__info > small {
   color: #666;
+}
+
+/* Style for the button */
+.filter-button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+
+/* Style for the funnel icon */
+.filter-icon {
+  font-size: 16px;
+  margin-left: 10px;
+  transition: transform 0.3s;
+}
+
+/* Style for the open funnel icon */
+.filter-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Style for the filter div */
+.filter-div {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1219px;
+  margin-left: -192px;
+}
+
+/* Style for each row of input fields */
+.input-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for individual input fields */
+label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  flex: 2;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  padding-left: 30px; 
+  width: 380px;
+}
+
+.input-wrapper svg {
+  position: absolute;
+  left: 10px; /* Adjust the left position as needed */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.inner_portion1_card {
+  /* width: 600px; */
+  display: flex;
+  margin-top: -81px;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.inner_portion1_card input[type="text"] {
+  flex: 1 1;
+  height: 50px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: #8f95b2;
+  font-weight: 700;
+  line-height: 32px;
+  font-style: normal;
+  padding: 16px 24px;
+  margin-right: 25px;
+  border-radius: 8px;
+  background-color: #f4f6fa;
+}
+.inner_portion1_card button {
+  height: 50px;
+  width: 180px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  font-style: normal;
+  border-radius: 8px;
+  background-color: #0050f5;
+}
+
+.button_filter {
+  justify-content: center;
+  display: flex;
+}
+.search_button {
+  height: 50px;
+  width: 180px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  font-style: normal;
+  border-radius: 8px;
+  background-color: #0050f5;
 }
